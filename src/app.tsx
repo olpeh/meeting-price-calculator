@@ -59,7 +59,7 @@ function mainContent(sources : Sources) : Stream<VNode> {
 
 function footer(sources : Sources) : Stream<VNode> {
     return xs.of(
-        a('.app-footer', { href: 'https://cycle.js.org/', target: '_blank' }, [
+        a('.app-footer', {attrs: {href: 'https://cycle.js.org/', target: '_blank' }}, [
             span('.cycle-label', 'Built with CycleJS'),
             div('.cycle-logo'),
         ])

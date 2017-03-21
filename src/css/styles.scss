@@ -58,6 +58,8 @@ body {
         .app-footer {
             flex: 1 1 auto;
             flex-direction: row;
+            text-decoration: none;
+            color: inherit;
 
             .cycle-label {
                 font-size: 2vw;
@@ -69,6 +71,10 @@ body {
                 height: 20px;
                 width: 20px;
                 margin-left: 5px;
+            }
+
+            &:hover {
+                transform: scale(1.1);
             }
         }
     }
