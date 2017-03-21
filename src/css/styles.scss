@@ -1,0 +1,75 @@
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background: #1E1E1E;
+    color: #96C4CA;
+}
+
+
+#app {
+    width: 100%;
+    height: 100%;
+
+    .flex-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: flex-start;
+
+        .app-header,
+        .app-content,
+        .app-footer {
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-header {
+            flex: 1 1 auto;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 2.5vw;
+        }
+
+        .app-content {
+            flex: 8 1 auto;
+
+            .current-price-label {
+                font-size: 3vw;
+            }
+
+            .current-price-value {
+                font-weight: bold;
+                font-size: 10vw;
+            }
+        }
+
+        .app-footer {
+            flex: 1 1 auto;
+            flex-direction: row;
+
+            .cycle-label {
+                font-size: 2vw;
+            }
+
+            .cycle-logo {
+                background: url('../img/cycle-logo.png') no-repeat center;
+                background-size: cover;
+                height: 20px;
+                width: 20px;
+                margin-left: 5px;
+            }
+        }
+    }
+}

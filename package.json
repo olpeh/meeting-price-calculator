@@ -1,0 +1,45 @@
+{
+  "name": "olpefi",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "cycle-scripts-one-fits-all": "1.1.0"
+  },
+  "dependencies": {
+    "@cycle/dom": "^16.0.0",
+    "@cycle/http": "^13.2.0",
+    "@cycle/run": "^3.0.0",
+    "@cycle/time": "^0.7.3",
+    "xstream": "^10.3.0"
+  },
+  "scripts": {
+    "start": "cycle-scripts start",
+    "test": "cycle-scripts test",
+    "build": "cycle-scripts build",
+    "eject": "cycle-scripts eject"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": [
+              "last 2 versions"
+            ]
+          },
+          "useBuiltIns": true
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "Snabbdom.createElement"
+        }
+      ]
+    ]
+  }
+}
