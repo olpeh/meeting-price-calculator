@@ -10,25 +10,20 @@ import Footer from './components/footer';
 export function App(sources : Sources) : Sinks {
     const headerVDom$ : Stream<VNode> = Header(sources);
 
+    const priceInputsProxy$ : xs<{}> = xs.create();
     const priceInputsSinks : Sinks = PriceInputs(sources);
     const priceInputsVDom$ : Stream<VNode> = priceInputsSinks.DOM;
     const priceInputs$ : xs<number> = priceInputsSinks.PRICE;
 
-    // @TODO: is this ok?
-    sources.PRICE = priceInputs$;
+    const priceVDom$ : Stream<VNode> = Price({...sources, PRICE: priceInputsProxy$ as xs<number>});
+    priceInputsProxy$.imitate(priceInputs$);
 
-    const priceVDom$ : Stream<VNode> = Price(sources);
     const footerVDom$ : Stream<VNode> = Footer(sources);
 
     const vdom$ : Stream<VNode> = xs
         .combine(headerVDom$, priceVDom$, priceInputsVDom$, footerVDom$)
-        .map(([headerVDom, priceVDom, priceInputVDom, footerVDom]) =>
-            div('.App-flex-container', [
-                headerVDom,
-                priceVDom,
-                priceInputVDom,
-                footerVDom,
-            ])
+        .map((VDomArray) =>
+            div('.App-flex-container', VDomArray)
         );
 
     const sinks : Sinks = {
