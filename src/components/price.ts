@@ -9,7 +9,7 @@ export default function Price(sources : Sources) : Stream<VNode> {
     const currency : string = '€';
 
     const tick$ : xs<number> = sources.Time.periodic(tickLength).startWith(0);
-    const adjustments$ : xs<number> = sources.ADJUSTMENTS;
+    const adjustments$ : xs<number> = sources.PRICE;
     const parameter$ : xs<[number, number]> = xs.combine(tick$, adjustments$);
 
     const price$ : xs<string> = parameter$.map(params => {
