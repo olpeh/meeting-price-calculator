@@ -7,11 +7,13 @@ export type Sources = {
     DOM : DOMSource;
     HTTP : HTTPSource;
     Time : TimeSource;
+    ADJUSTMENTS : Stream<number>;
 };
 
 export type Sinks = {
     DOM? : Stream<VNode>;
     HTTP? : Stream<RequestOptions>;
+    ADJUSTMENTS? : Stream<number>;
 };
 
 export type Component = (s : Sources) => Sinks;
