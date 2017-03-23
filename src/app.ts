@@ -12,7 +12,7 @@ export function App(sources : Sources) : Sinks {
 
     const priceInputsSinks : Sinks = PriceInputs(sources);
     const priceInputsVDom$ : Stream<VNode> = priceInputsSinks.DOM;
-    const priceInputs$ : Stream<number> = priceInputsSinks.PRICE;
+    const priceInputs$ : xs<number> = priceInputsSinks.PRICE;
 
     // @TODO: is this ok?
     sources.PRICE = priceInputs$;
