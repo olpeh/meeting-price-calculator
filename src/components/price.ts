@@ -13,7 +13,7 @@ export default function Price(sources : Sources) : Stream<VNode> {
     const parameter$ : xs<[number, number]> = xs.combine(tick$, price$);
 
     const totalPrice$ : xs<string> = parameter$.map(([tick, price]) =>
-        (tick * price * priceToTickPrice).toFixed(2);
+        (tick * price * priceToTickPrice).toFixed(2)
     );
 
     return totalPrice$.map(price =>
