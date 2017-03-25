@@ -10,13 +10,18 @@ import Footer from './components/footer';
 export function App(sources : Sources) : Sinks {
     const headerVDom$ : Stream<VNode> = Header(sources);
 
-    const priceInputsProxy$ : xs<{}> = xs.create();
+    const priceProxy$ : xs<{}> = xs.create();
     const priceInputsSinks : Sinks = PriceInputs(sources);
     const priceInputsVDom$ : Stream<VNode> = priceInputsSinks.DOM;
-    const priceInputs$ : xs<number> = priceInputsSinks.PRICE;
+    const price$ : xs<number> = priceInputsSinks.PRICE;
+    const currency$ : xs<string> = priceInputsSinks.CURRENCY.startWith('€');
 
-    const priceVDom$ : Stream<VNode> = Price({...sources, PRICE: priceInputsProxy$ as xs<number>});
-    priceInputsProxy$.imitate(priceInputs$);
+    const priceVDom$ : Stream<VNode> = Price({
+            ...sources,
+            PRICE: priceProxy$ as xs<number>,
+            CURRENCY: currency$ as xs<string>
+        });
+    priceProxy$.imitate(price$);
 
     const footerVDom$ : Stream<VNode> = Footer(sources);
 
@@ -28,7 +33,7 @@ export function App(sources : Sources) : Sinks {
 
     const sinks : Sinks = {
         DOM : vdom$,
-        PRICE: priceInputs$
+        PRICE: price$
     };
 
     return sinks;

@@ -8,12 +8,14 @@ export type Sources = {
     HTTP : HTTPSource;
     Time : TimeSource;
     PRICE : Stream<number>;
+    CURRENCY : Stream<string>;
 };
 
 export type Sinks = {
     DOM? : Stream<VNode>;
     HTTP? : Stream<RequestOptions>;
     PRICE? : Stream<number>;
+    CURRENCY? : Stream<string>;
 };
 
 export type Component = (s : Sources) => Sinks;
