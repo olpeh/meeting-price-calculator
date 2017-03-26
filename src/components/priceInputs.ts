@@ -1,5 +1,5 @@
 import xs, { Stream } from 'xstream';
-import { VNode, div, button, input, select, option } from '@cycle/dom';
+import { VNode, div, button, input, select, option, span } from '@cycle/dom';
 
 import { Sources, Sinks } from '../interfaces';
 
@@ -14,7 +14,7 @@ export default function PriceInputs(sources : Sources) : Sinks {
         .map(ev => parseInt((ev.target as HTMLInputElement).value));
     const avgPrice$ : xs<number> = changeAvgPrice$.startWith(100);
 
-     const changeCurrency$ : xs<string> = sources.DOM.select('.currency-select')
+    const changeCurrency$ : xs<string> = sources.DOM.select('.currency-select')
         .events('change')
         .map(ev => (ev.target as HTMLInputElement).value);
     const currency$ : xs<string> = changeCurrency$.startWith('€');
@@ -22,29 +22,33 @@ export default function PriceInputs(sources : Sources) : Sinks {
     const vdom$ : Stream<VNode> = xs.combine(personAmount$, avgPrice$, currency$)
         .map(([personAmount, avgPrice, currency]) =>
             div('.PriceInputs', [
-                div('.current-price', [
-                    div('Total price per hour: '),
-                    div(personAmount * avgPrice),
-                    div('.selected-currency', currency),
-                ]),
                 div('.person-amount', [
-                    div('.person-amount-label', 'Amount of people'),
-                    input('.person-amount-input', {attrs: {type: 'range', min: 1, max: 100}}),
-                    div('.person-amount-value', personAmount),
+                    div('.person-amount-label.label', 'Amount of people'),
+                    span('.input-wrapper', [
+                        input('.person-amount-input', {attrs: {type: 'text', value: `${personAmount} persons`}}),
+                        input('.person-amount-input', {attrs: {type: 'range', min: 1, max: 100}}),
+                    ])
+                ]),
+                div('.price-result', [
+                    div('.current-price', [
+                        div('.total-price-label.label', 'Total price per hour'),
+                        div('.total-price-value',  currency === '€' ? `${personAmount * avgPrice} ${currency}` : `${currency} ${personAmount * avgPrice}`)
+                    ]),
+                    div('.currency', [
+                        span('.currency-label.label', 'Currency'),
+                        select('.currency-select', [
+                            option('€'),
+                            option('$')
+                        ])
+                    ])
                 ]),
                 div('.avg-price', [
-                    div('.avg-price-label', 'Average hourly price'),
-                    input('.avg-price-input', {attrs: {type: 'range', min: 1, max: 400}}),
-                    div('.avg-price-value', avgPrice),
-                    div('.selected-currency', currency),
-                ]),
-                 div('.currency', [
-                    div('.currency-label', 'Currency'),
-                    select('.currency-select', [
-                        option('€'),
-                        option('$')
+                    div('.avg-price-label.label', 'Average hourly price'),
+                    span('.input-wrapper', [
+                        input('.avg-price-input', {attrs: {type: 'text', value: `${avgPrice} ${currency}/h`}}),
+                        input('.avg-price-input', {attrs: {type: 'range', min: 5, max: 1000, step: 5}}),
                     ])
-                ])
+                ]),
             ])
         );
 

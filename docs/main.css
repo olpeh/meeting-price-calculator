@@ -35,15 +35,61 @@ body {
       font-weight: bold;
       font-size: 2.2vw; }
     #app .App-flex-container .Price {
-      flex: 5 1 auto; }
+      flex: 7 1 auto; }
       #app .App-flex-container .Price .Price-label {
         font-size: 3vw; }
       #app .App-flex-container .Price .Price-value {
         font-weight: bold;
         font-size: 10vw; }
     #app .App-flex-container .PriceInputs {
-      flex: 4 1 auto;
-      flex-direction: row; }
+      flex: 2 1 auto;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 8%; }
+      #app .App-flex-container .PriceInputs > div:first-child {
+        margin-right: 80px; }
+      #app .App-flex-container .PriceInputs > div:last-child {
+        margin-left: 80px; }
+      #app .App-flex-container .PriceInputs .person-amount,
+      #app .App-flex-container .PriceInputs .avg-price {
+        text-align: center; }
+        #app .App-flex-container .PriceInputs .person-amount .label,
+        #app .App-flex-container .PriceInputs .avg-price .label {
+          margin-bottom: 20px; }
+      #app .App-flex-container .PriceInputs .price-result {
+        flex-direction: column; }
+        #app .App-flex-container .PriceInputs .price-result .current-price .total-price-value {
+          text-align: center;
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 32px; }
+        #app .App-flex-container .PriceInputs .price-result .currency {
+          margin-top: 3px;
+          text-align: center; }
+          #app .App-flex-container .PriceInputs .price-result .currency .currency-select {
+            margin-left: 10px;
+            padding: 2px 5px; }
+      #app .App-flex-container .PriceInputs .input-wrapper {
+        position: relative;
+        height: 32px;
+        width: 128px; }
+        #app .App-flex-container .PriceInputs .input-wrapper .total-price-input,
+        #app .App-flex-container .PriceInputs .input-wrapper .person-amount-input,
+        #app .App-flex-container .PriceInputs .input-wrapper .avg-price-input {
+          height: 32px;
+          width: 128px;
+          text-align: center;
+          font-size: 16px; }
+        #app .App-flex-container .PriceInputs .input-wrapper input[type="range"] {
+          position: absolute;
+          left: -26px;
+          top: -64px;
+          border: 1px solid transparent;
+          opacity: 0;
+          cursor: e-resize;
+          width: 180px;
+          height: 128px; }
     #app .App-flex-container .Footer {
       flex: 1 1 auto;
       flex-direction: row;
