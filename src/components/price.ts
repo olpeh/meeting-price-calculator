@@ -42,7 +42,7 @@ function renderPrice(price: number, currency: string): VNode {
         div('.Price-label', 'This meeting has cost'),
         div('.Price-value', currency === '€'
             ? `${displayPrice.replace('.', ',')} ${currency}`
-            : `${currency} ${price}`),
+            : `${currency} ${displayPrice}`),
     ]);
 }
 
