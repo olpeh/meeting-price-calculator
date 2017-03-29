@@ -22,7 +22,6 @@ body {
     align-items: flex-start; }
     #app .App-flex-container .Header,
     #app .App-flex-container .Price,
-    #app .App-flex-container .PriceInputs,
     #app .App-flex-container .Footer {
       align-self: stretch;
       display: flex;
@@ -35,73 +34,91 @@ body {
       font-weight: bold;
       font-size: 2.2vw; }
     #app .App-flex-container .Price {
-      flex: 7 1 auto; }
-      #app .App-flex-container .Price .Price-label {
+      flex: 6 1 auto;
+      justify-content: space-around; }
+      #app .App-flex-container .Price .Price-actual .Price-label {
         font-size: 3vw; }
-      #app .App-flex-container .Price .Price-value {
+      #app .App-flex-container .Price .Price-actual .Price-value {
         font-weight: bold;
         font-size: 10vw; }
-    #app .App-flex-container .PriceInputs {
-      flex: 2 1 auto;
-      flex-direction: row;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 0 8%; }
-      #app .App-flex-container .PriceInputs > div:first-child {
-        margin-right: 80px; }
-      #app .App-flex-container .PriceInputs > div:last-child {
-        margin-left: 80px; }
-      #app .App-flex-container .PriceInputs .person-amount,
-      #app .App-flex-container .PriceInputs .avg-price {
-        text-align: center; }
-        #app .App-flex-container .PriceInputs .person-amount .label,
-        #app .App-flex-container .PriceInputs .avg-price .label {
-          margin-bottom: 20px; }
-      #app .App-flex-container .PriceInputs .price-result {
-        flex-direction: column; }
-        #app .App-flex-container .PriceInputs .price-result .current-price .total-price-value {
-          text-align: center;
-          font-weight: bold;
-          font-size: 24px;
-          line-height: 32px; }
-        #app .App-flex-container .PriceInputs .price-result .currency {
-          margin-top: 3px;
+      #app .App-flex-container .Price .PriceInputs {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        align-self: stretch;
+        padding: 0 8%; }
+        #app .App-flex-container .Price .PriceInputs > div:first-child {
+          margin-right: 80px; }
+        #app .App-flex-container .Price .PriceInputs > div:last-child {
+          margin-left: 80px; }
+        #app .App-flex-container .Price .PriceInputs .person-amount,
+        #app .App-flex-container .Price .PriceInputs .avg-price {
           text-align: center; }
-          #app .App-flex-container .PriceInputs .price-result .currency .currency-select {
-            margin-left: 10px;
-            padding: 2px 5px; }
-      #app .App-flex-container .PriceInputs .input-wrapper {
-        position: relative;
-        height: 32px;
-        width: 128px; }
-        #app .App-flex-container .PriceInputs .input-wrapper .total-price-input,
-        #app .App-flex-container .PriceInputs .input-wrapper .person-amount-input,
-        #app .App-flex-container .PriceInputs .input-wrapper .avg-price-input {
+          #app .App-flex-container .Price .PriceInputs .person-amount .label,
+          #app .App-flex-container .Price .PriceInputs .avg-price .label {
+            margin-bottom: 20px; }
+        #app .App-flex-container .Price .PriceInputs .price-result {
+          flex-direction: column; }
+          #app .App-flex-container .Price .PriceInputs .price-result .current-price .total-price-value {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 32px; }
+          #app .App-flex-container .Price .PriceInputs .price-result .currency {
+            margin-top: 3px;
+            text-align: center; }
+            #app .App-flex-container .Price .PriceInputs .price-result .currency .currency-select {
+              margin-left: 10px;
+              padding: 2px 5px; }
+        #app .App-flex-container .Price .PriceInputs .input-wrapper {
+          position: relative;
           height: 32px;
-          width: 128px;
-          text-align: center;
-          font-size: 16px; }
-        #app .App-flex-container .PriceInputs .input-wrapper input[type="range"] {
-          position: absolute;
-          left: -26px;
-          top: -64px;
-          border: 1px solid transparent;
-          opacity: 0;
-          cursor: e-resize;
-          width: 180px;
-          height: 128px; }
+          width: 128px; }
+          #app .App-flex-container .Price .PriceInputs .input-wrapper .total-price-input,
+          #app .App-flex-container .Price .PriceInputs .input-wrapper .person-amount-input,
+          #app .App-flex-container .Price .PriceInputs .input-wrapper .avg-price-input {
+            height: 32px;
+            width: 128px;
+            text-align: center;
+            font-size: 16px; }
+          #app .App-flex-container .Price .PriceInputs .input-wrapper input[type="range"] {
+            position: absolute;
+            left: -26px;
+            top: -64px;
+            border: 1px solid transparent;
+            opacity: 0;
+            cursor: e-resize;
+            width: 180px;
+            height: 128px; }
     #app .App-flex-container .Footer {
       flex: 1 1 auto;
       flex-direction: row;
       text-decoration: none;
       color: inherit; }
-      #app .App-flex-container .Footer .Footer-cycle-label {
-        font-size: 2vw; }
-      #app .App-flex-container .Footer .Footer-cycle-logo {
-        background: url(86f913426375129172bf95c4187dc268.png) no-repeat center;
-        background-size: cover;
-        height: 20px;
-        width: 20px;
-        margin-left: 5px; }
-      #app .App-flex-container .Footer:hover {
-        transform: scale(1.1); }
+      #app .App-flex-container .Footer .Footer-link {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        color: inherit;
+        align-items: center; }
+        #app .App-flex-container .Footer .Footer-link .Footer-label {
+          font-size: 1.4vw; }
+        #app .App-flex-container .Footer .Footer-link .Footer-cycle-logo {
+          background: url(86f913426375129172bf95c4187dc268.png) no-repeat center;
+          background-size: cover;
+          height: 20px;
+          width: 20px;
+          margin-left: 5px; }
+        #app .App-flex-container .Footer .Footer-link .Footer-github-logo {
+          background: url(f87561b8bb354ef83b09a66e54f70e08.png) no-repeat center;
+          background-size: cover;
+          height: 20px;
+          width: 20px;
+          margin-left: 5px; }
+        #app .App-flex-container .Footer .Footer-link:hover {
+          transform: scale(1.1); }
+        #app .App-flex-container .Footer .Footer-link:first-child {
+          margin-right: 20px; }
+        #app .App-flex-container .Footer .Footer-link:last-child {
+          margin-left: 20px; }
