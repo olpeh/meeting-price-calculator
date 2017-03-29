@@ -27,7 +27,6 @@ body {
 
         .Header,
         .Price,
-        .PriceInputs,
         .Footer {
             align-self: stretch;
             display: flex;
@@ -44,90 +43,95 @@ body {
         }
 
         .Price {
-            flex: 7 1 auto;
+            flex: 6 1 auto;
+            justify-content: space-around;
 
-            .Price-label {
-                font-size: 3vw;
-            }
+            .Price-actual {
 
-            .Price-value {
-                font-weight: bold;
-                font-size: 10vw;
-            }
-        }
+                .Price-label {
+                    font-size: 3vw;
+                }
 
-        .PriceInputs {
-            flex: 2 1 auto;
-            flex-direction: row;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 0 8%;
-
-            > div:first-child {
-                margin-right: 80px;
-            }
-
-            > div:last-child {
-                margin-left: 80px;
-            }
-
-            .person-amount,
-            .avg-price {
-                text-align: center;
-
-                .label {
-                    margin-bottom: 20px;
+                .Price-value {
+                    font-weight: bold;
+                    font-size: 10vw;
                 }
             }
 
-            .price-result {
-                flex-direction: column;
+            .PriceInputs {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: flex-start;
+                align-self: stretch;
+                padding: 0 8%;
 
-                .current-price {
-                    .total-price-value {
-                        text-align: center;
-                        font-weight: bold;
-                        font-size: 24px;
-                        line-height: 32px;
-                    }
+                > div:first-child {
+                    margin-right: 80px;
                 }
 
-                .currency {
-                    margin-top: 3px;
+                > div:last-child {
+                    margin-left: 80px;
+                }
+
+                .person-amount,
+                .avg-price {
                     text-align: center;
 
-                    .currency-select {
-                        margin-left: 10px;
-                        padding: 2px 5px;
+                    .label {
+                        margin-bottom: 20px;
                     }
                 }
-            }
 
-            .input-wrapper {
-                position: relative;
-                height: 32px;
-                width: 128px;
+                .price-result {
+                    flex-direction: column;
 
-                .total-price-input,
-                .person-amount-input,
-                .avg-price-input {
+                    .current-price {
+                        .total-price-value {
+                            text-align: center;
+                            font-weight: bold;
+                            font-size: 24px;
+                            line-height: 32px;
+                        }
+                    }
+
+                    .currency {
+                        margin-top: 3px;
+                        text-align: center;
+
+                        .currency-select {
+                            margin-left: 10px;
+                            padding: 2px 5px;
+                        }
+                    }
+                }
+
+                .input-wrapper {
+                    position: relative;
                     height: 32px;
                     width: 128px;
-                    text-align: center;
-                    font-size: 16px;
-                }
 
-                input[type="range"] {
-                    position : absolute;
-                    left : -26px;
-                    top : -64px;
-                    border : 1px solid transparent;
-                    opacity : 0;
-                    cursor : e-resize;
-                    width : 180px;
-                    height : 128px;
-                }
+                    .total-price-input,
+                    .person-amount-input,
+                    .avg-price-input {
+                        height: 32px;
+                        width: 128px;
+                        text-align: center;
+                        font-size: 16px;
+                    }
 
+                    input[type="range"] {
+                        position : absolute;
+                        left : -26px;
+                        top : -64px;
+                        border : 1px solid transparent;
+                        opacity : 0;
+                        cursor : e-resize;
+                        width : 180px;
+                        height : 128px;
+                    }
+
+                }
             }
         }
 

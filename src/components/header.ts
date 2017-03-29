@@ -1,7 +1,7 @@
 import xs, { Stream } from 'xstream';
-import { VNode, div, h1, button } from '@cycle/dom';
+import { VNode, div, h1 } from '@cycle/dom';
 
-import { Sources, Sinks } from '../interfaces';
+import { Sources } from '../interfaces';
 
 export default function Header(sources: Sources): Stream<VNode> {
     return xs.of(
