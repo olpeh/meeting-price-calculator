@@ -13,9 +13,7 @@ export function App(sources: Sources): Sinks {
 
     const vdom$: Stream<VNode> = xs
         .combine(headerVDom$, priceVDom$, footerVDom$)
-        .map((VDomArray) =>
-            div('.App-flex-container', VDomArray),
-    );
+        .map((VDomArray) => div('.App-flex-container', VDomArray));
 
     const sinks: Sinks = {
         DOM: vdom$,

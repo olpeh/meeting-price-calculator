@@ -1,7 +1,7 @@
 import xs, { Stream } from 'xstream';
 import { VNode, div, button, input, select, option, span } from '@cycle/dom';
 
-import { Sources, Sinks } from '../interfaces';
+import { Sources } from '../interfaces';
 
 function intent(domSource) {
     return {
@@ -118,5 +118,4 @@ export default function Price(sources: Sources): Stream<VNode> {
     const state$ = model(actions, tick$);
     const vdom$ = view(state$);
     return vdom$;
-
 }
