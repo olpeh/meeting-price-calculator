@@ -31,6 +31,7 @@
     "@cycle/http": "^13.2.0",
     "@cycle/run": "^3.0.0",
     "@cycle/time": "^0.7.3",
+    "tslint": "^4.5.1",
     "xstream": "^10.3.0"
   },
   "scripts": {

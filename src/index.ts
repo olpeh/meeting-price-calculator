@@ -8,12 +8,12 @@ import { timeDriver } from '@cycle/time';
 import { Component } from './interfaces';
 import { App } from './app';
 
-const main : Component = App;
+const main: Component = App;
 
-const drivers : any = {
-    DOM : makeDOMDriver('#app'),
-    HTTP : makeHTTPDriver(),
-    Time : timeDriver
+const drivers: any = {
+    DOM: makeDOMDriver('#app'),
+    HTTP: makeHTTPDriver(),
+    Time: timeDriver,
 };
 
 run(main, drivers);
