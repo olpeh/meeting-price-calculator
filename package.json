@@ -38,5 +38,13 @@
     "start": "node scripts/start.js",
     "test": "jest --watchAll --coverage",
     "build": "node scripts/build.js"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts, tsx, js,jsx}"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/(build|docs|node_modules)/"
+    ]
   }
 }
