@@ -7,11 +7,13 @@ export type Sources = {
     DOM: DOMSource;
     HTTP: HTTPSource;
     Time: TimeSource;
+    props$: any;
 };
 
 export type Sinks = {
     DOM?: Stream<VNode>;
     HTTP?: Stream<RequestOptions>;
+    value$?: Stream<number>;
 };
 
 export type Component = (s: Sources) => Sinks;

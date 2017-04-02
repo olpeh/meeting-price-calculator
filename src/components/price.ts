@@ -1,7 +1,9 @@
 import xs, { Stream } from 'xstream';
+import isolate from '@cycle/isolate';
 import { VNode, div, button, input, select, option, span } from '@cycle/dom';
 
-import { Sources } from '../interfaces';
+import { Sources, Sinks, Component } from '../interfaces';
+import SliderInput from './sliderInput';
 
 function intent(domSource) {
     return {
@@ -17,7 +19,7 @@ function intent(domSource) {
     };
 }
 
-function model(actions, tick$) {
+function model(actions, tick$): PriceState {
     const currency$ = actions.changeCurrency$.startWith('€');
     const avgPrice$ = actions.changeAvgPrice$.startWith(100);
     const personAmount$ = actions.changePersonAmount$.startWith(4);
@@ -103,19 +105,29 @@ function renderInputs(personAmount: number, avgPrice: number, currency: string):
     ]);
 }
 
-function view(state$) {
-    return state$.map(({ personAmount, avgPrice, currency, price }) =>
-        div('.Price', [
-            renderPrice(price, currency),
-            renderInputs(personAmount, avgPrice, currency),
-        ]),
+function view(state$: PriceState, personAmountVDom$) {
+    return xs.combine(state$, personAmountVDom$)
+        .map(([{ personAmount, avgPrice, currency, price }, personAmountVDom]) =>
+            div('.Price', [
+                renderPrice(price, currency),
+                renderInputs(personAmount, avgPrice, currency),
+                personAmountVDom,
+            ]),
     );
 }
 
 export default function Price(sources: Sources): Stream<VNode> {
+    const personAmountProps$ = xs.of({
+        label: 'Person amount', unit: 'persons', min: 1, initial: 4, max: 100,
+    });
+    const PersonAmountSlider: Component = isolate(SliderInput);
+    const personAmountSlider: Sinks = SliderInput(sources.DOM, personAmountProps$);
     const tick$: xs<number> = sources.Time.periodic(1000);
     const actions = intent(sources.DOM);
-    const state$ = model(actions, tick$);
-    const vdom$ = view(state$);
+    const state$: PriceState = model(actions, tick$);
+    const vdom$ = view(state$, personAmountSlider.DOM);
+
     return vdom$;
 }
+
+export type PriceState = xs<{ personAmount: number, avgPrice: number, currency: string, price: number }>;
