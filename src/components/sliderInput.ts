@@ -12,39 +12,43 @@ function intent(domSource) {
 
 function model(actions) {
     const value$ = actions.changeValue$.startWith(4);
-    return value$.map(value => ({
-        value,
-    }));
+    return value$.map(value => value);
 }
 
-function view(state$, props$) {
-    return state$.map(({ value }) =>
-        div('.person-amount', [
-            div('.person-amount-label.label', 'Amount of people'),
-            span('.input-wrapper', [
-                input('.person-amount-input', {
-                    attrs: {
-                        type: 'text',
-                        value: `${value}`,
-                    },
-                }),
-                input('.person-amount-input', {
-                    attrs: {
-                        type: 'range',
-                        min: 1,
-                        max: 100,
-                    },
-                }),
-            ]),
-        ]));
+function view(state$: xs<number>, props$: SliderInputProps): xs<VNode> {
+    return xs.combine(state$, props$)
+        .map(([value, { label, unit, min, initial, max, step }]) =>
+            div('.slider-input', [
+                div('.slider-input-label.label', label),
+                span('.input-wrapper', [
+                    input('.slider-input-text', {
+                        attrs: {
+                            type: 'text',
+                            value: `${value} ${unit}`,
+                        },
+                    }),
+                    input('.slider-input-range', {
+                        attrs: {
+                            type: 'range',
+                            min,
+                            max,
+                            step,
+                        },
+                    }),
+                ]),
+            ]));
 }
 
-export default function SliderInput(domSource: DOMSource, props$: any): Sinks {
+export default function SliderInput(domSource: DOMSource, props$: SliderInputProps): Sinks {
     const actions = intent(domSource);
-    const state$ = model(actions);
+    const state$: xs<number> = model(actions);
     const vdom$ = view(state$, props$);
     return {
         DOM: vdom$,
         value$: state$,
     };
 }
+
+export type SliderInputProps = xs<{
+    label: string, unit: string, min: number, initial: number, max: number, step?: number,
+}>;
