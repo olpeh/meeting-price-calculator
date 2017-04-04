@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "test": "jest --watchAll --coverage",
+    "test": "node scripts/test.js",
     "build": "node scripts/build.js"
   },
   "jest": {
@@ -44,7 +44,7 @@
       "src/**/*.{ts, tsx, js,jsx}"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/(build|docs|node_modules)/"
+      "<rootDir>/(build|docs|node_modules|scripts)/"
     ]
   }
 }
