@@ -29,6 +29,7 @@
   "dependencies": {
     "@cycle/dom": "^16.0.0",
     "@cycle/http": "^13.2.0",
+    "@cycle/isolate": "^2.1.0",
     "@cycle/run": "^3.0.0",
     "@cycle/time": "^0.7.3",
     "tslint": "^4.5.1",
