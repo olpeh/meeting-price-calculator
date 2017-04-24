@@ -71,7 +71,7 @@ body {
           flex-direction: column;
           justify-content: space-between;
           position: relative; }
-          #app .App-flex-container .Price .PriceInputs .SliderInput input[type="text"] {
+          #app .App-flex-container .Price .PriceInputs .SliderInput input[type="number"] {
             background: transparent;
             color: #96C4CA;
             border-color: #96C4CA;
@@ -82,7 +82,7 @@ body {
             position: absolute;
             top: 34px;
             text-align: right;
-            right: 20px;
+            right: 30px;
             z-index: 0; }
     #app .App-flex-container .Footer {
       flex: 1 1 auto;
