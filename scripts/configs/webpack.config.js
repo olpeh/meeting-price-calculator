@@ -17,7 +17,7 @@ const path = require('path');
 module.exports = createConfig([
     entryPoint(path.join(process.cwd(), 'src', 'index.ts')),
     entryPoint(path.join(process.cwd(), 'src', 'css', 'styles.scss')),
-    setOutput(path.join(process.cwd(), 'docs', 'bundle.js')),
+    setOutput(path.join(process.cwd(), 'build', 'bundle.js')),
     babel(),
     typescript(),
     tslint(),
