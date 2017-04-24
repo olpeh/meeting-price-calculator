@@ -21,7 +21,7 @@ function view(state$: xs<number>, props: SliderInputProps): xs<VNode> {
             label('.SliderInput-label', props.label),
             input('.SliderInput-input', {
                 attrs: {
-                    type: 'text',
+                    type: 'number',
                     value: value,
                 },
             }),
