@@ -70,6 +70,9 @@ function view(state$: xs<State>): xs<VNode> {
       input('.SliderInput-input', {
         attrs: {
           type: 'number',
+          min,
+          max,
+          step,
           value
         }
       }),
