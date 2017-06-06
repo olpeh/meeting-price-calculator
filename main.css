@@ -20,9 +20,7 @@ body {
     justify-content: flex-start;
     align-content: stretch;
     align-items: flex-start; }
-    #app .App-flex-container .Header,
-    #app .App-flex-container .Price,
-    #app .App-flex-container .Footer {
+    #app .App-flex-container .Header, #app .App-flex-container .Price, #app .App-flex-container .Footer {
       align-self: stretch;
       display: flex;
       flex-direction: column;
@@ -72,7 +70,7 @@ body {
           justify-content: space-between;
           position: relative; }
           #app .App-flex-container .Price .PriceInputs .SliderInput input[type="number"] {
-            background: transparent;
+            background: rgba(150, 196, 202, 0.25);
             color: #96C4CA;
             border-color: #96C4CA;
             font-weight: bold;
