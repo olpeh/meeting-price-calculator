@@ -1,171 +1,168 @@
 html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 body {
-    width: 100%;
-    height: 100%;
-    background: #1E1E1E;
-    color: #96C4CA;
+  width: 100%;
+  height: 100%;
+  background: #1E1E1E;
+  color: #96C4CA;
 }
 
-
 #app {
-    width: 100%;
+  width: 100%;
+  height: 100%;
+
+  .App-flex-container {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
 
-    .App-flex-container {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-content: stretch;
-        align-items: flex-start;
-
-        .Header,
-        .Price,
-        .Footer {
-            align-self: stretch;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .Header {
-            flex: 1 1 auto;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 2.2vw;
-        }
-
-        .Price {
-            flex: 6 1 auto;
-            justify-content: space-around;
-
-            .Price-actual {
-                justify-content: center;
-
-                .Price-label {
-                    font-size: 3vw;
-                }
-
-                .Price-value {
-                    font-weight: bold;
-                    font-size: 10vw;
-                }
-            }
-
-            .PriceInputs {
-                display: flex;
-                flex-direction: row;
-                padding: 0 8%;
-                height: 95px;
-
-                > div:first-child {
-                    margin-right: 60px;
-                }
-
-                > div:last-child {
-                    margin-left: 60px;
-                }
-
-                .price-result {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-
-                    .total-price-value {
-                        text-align: center;
-                        font-weight: bold;
-                        font-size: 24px;
-                        line-height: 32px;
-                    }
-
-                    .currency {
-                        text-align: center;
-
-                        .currency-select {
-                            margin-left: 10px;
-                            padding: 2px 5px;
-                        }
-                    }
-                }
-
-                .SliderInput {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    position: relative;
-
-                    input[type="number"] {
-                        background: transparent;
-                        color: #96C4CA;
-                        border-color: #96C4CA;
-                        font-weight: bold;
-                        padding: 7px 10px;
-                        font-size: 16px;
-                    }
-
-                    .SliderInput-unit {
-                        position: absolute;
-                        top: 34px;
-                        text-align: right;
-                        right: 30px;
-                        z-index: 0;
-                    }
-                }
-            }
-        }
-
-        .Footer {
-            flex: 1 1 auto;
-            flex-direction: row;
-            text-decoration: none;
-            color: inherit;
-
-            .Footer-link {
-                display: flex;
-                flex-direction: row;
-                text-decoration: none;
-                color: inherit;
-                align-items: center;
-
-                .Footer-label {
-                    font-size: 1.4vw;
-                }
-
-                .Footer-cycle-logo {
-                    background: url('../img/cycle-logo.png') no-repeat center;
-                    background-size: cover;
-                    height: 20px;
-                    width: 20px;
-                    margin-left: 5px;
-                }
-
-                .Footer-github-logo {
-                    background: url('../img/github-logo.png') no-repeat center;
-                    background-size: cover;
-                    height: 20px;
-                    width: 20px;
-                    margin-left: 5px;
-                }
-
-                &:hover {
-                    transform: scale(1.1);
-                }
-
-                &:first-child {
-                    margin-right: 20px;
-                }
-
-                &:last-child {
-                    margin-left: 20px;
-                }
-            }
-        }
+    .Header, .Price, .Footer {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
+
+    .Header {
+      flex: 1 1 auto;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 2.2vw;
+    }
+
+    .Price {
+      flex: 6 1 auto;
+      justify-content: space-around;
+
+      .Price-actual {
+        justify-content: center;
+
+        .Price-label {
+          font-size: 3vw;
+        }
+
+        .Price-value {
+          font-weight: bold;
+          font-size: 10vw;
+        }
+      }
+
+      .PriceInputs {
+        display: flex;
+        flex-direction: row;
+        padding: 0 8%;
+        height: 95px;
+
+        > div:first-child {
+          margin-right: 60px;
+        }
+
+        > div:last-child {
+          margin-left: 60px;
+        }
+
+        .price-result {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          .total-price-value {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 32px;
+          }
+
+          .currency {
+            text-align: center;
+
+            .currency-select {
+              margin-left: 10px;
+              padding: 2px 5px;
+            }
+          }
+        }
+
+        .SliderInput {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          position: relative;
+
+          input[type="number"] {
+            background: transparent;
+            color: #96C4CA;
+            border-color: #96C4CA;
+            font-weight: bold;
+            padding: 7px 10px;
+            font-size: 16px;
+          }
+
+          .SliderInput-unit {
+            position: absolute;
+            top: 34px;
+            text-align: right;
+            right: 30px;
+            z-index: 0;
+          }
+        }
+      }
+    }
+
+    .Footer {
+      flex: 1 1 auto;
+      flex-direction: row;
+      text-decoration: none;
+      color: inherit;
+
+      .Footer-link {
+        display: flex;
+        flex-direction: row;
+        text-decoration: none;
+        color: inherit;
+        align-items: center;
+
+        .Footer-label {
+          font-size: 1.4vw;
+        }
+
+        .Footer-cycle-logo {
+          background: url('../img/cycle-logo.png') no-repeat center;
+          background-size: cover;
+          height: 20px;
+          width: 20px;
+          margin-left: 5px;
+        }
+
+        .Footer-github-logo {
+          background: url('../img/github-logo.png') no-repeat center;
+          background-size: cover;
+          height: 20px;
+          width: 20px;
+          margin-left: 5px;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        &:first-child {
+          margin-right: 20px;
+        }
+
+        &:last-child {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
 }

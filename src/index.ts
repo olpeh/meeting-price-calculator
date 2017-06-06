@@ -11,8 +11,8 @@ import { App } from './app';
 const main: Component = App;
 
 const drivers: any = {
-    DOM: makeDOMDriver('#app'),
-    Time: timeDriver,
+  DOM: makeDOMDriver('#app'),
+  Time: timeDriver
 };
 
 const wrappedMain = onionify(main);
