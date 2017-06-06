@@ -22,10 +22,19 @@ export type Sinks = {
 export type Component = (s: Sources) => Sinks;
 
 export interface State {
-  tick: number;
-  currency: string;
-  personAmount: number;
-  avgPrice: number;
+    tick: number;
+    currency: string;
+    personAmount: SliderState;
+    avgPrice: SliderState;
 }
+
+export interface SliderState {
+    description: string;
+    unit: string;
+    min: number;
+    max: number;
+    step: number;
+    value: number;
+};
 
 export type Reducer = (prev?: State) => State | undefined;

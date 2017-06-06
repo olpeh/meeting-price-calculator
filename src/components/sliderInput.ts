@@ -20,21 +20,6 @@ export interface ValueChangeAction {
 
 export type Action = ValueChangeAction;
 
-function initReducer(prevState) {
-    if (typeof prevState === 'undefined') {
-        return {
-            description: 'DEFAULT!',
-            unit: 'default',
-            min: 0,
-            max: 100,
-            step: 1,
-            value: 1,
-        };
-    } else {
-        return prevState;
-    }
-}
-
 function intent(domSource): xs<Action> {
     return domSource
         .select('.SliderInput-input')
@@ -48,27 +33,32 @@ function intent(domSource): xs<Action> {
 }
 
 function model(action$: xs<Action>): xs<SliderReducer> {
-    const initReducer$: xs<SliderReducer> = xs.of(function initReducer(prev?: State): State {
-        return {
-            description: 'string',
-            unit: 'string',
-            min: 0,
-            max: 100,
-            step: 5,
-            value: 100,
-        };
+    const defaultReducer$: xs<SliderReducer> = xs.of(
+        function defaultReducer(prevState?: State): State {
+        if (typeof prevState === 'undefined') {
+            return {
+                description: 'description',
+                unit: 'unit',
+                min: 0,
+                max: 100,
+                step: 1,
+                value: 100,
+            };
+        } else {
+            return prevState;
+        }
     });
 
     const valueChangeReducer$: xs<SliderReducer> = action$
         .filter(ac => ac.type === 'VALUE_CHANGE')
         .map(ac => function valueChangeReducer(prevState: State): State {
             return {
-                value: ac.payload,
                 ...prevState,
+                value: ac.payload,
             };
         });
 
-    return xs.merge(initReducer$, valueChangeReducer$);
+    return xs.merge(defaultReducer$, valueChangeReducer$);
 }
 
 function view(state$: xs<State>): xs<VNode> {
