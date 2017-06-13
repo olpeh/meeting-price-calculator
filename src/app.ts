@@ -3,7 +3,7 @@ import { VNode, div } from '@cycle/dom';
 
 import { Sources, Sinks } from './interfaces';
 import Header from './components/header';
-import Price from './components/price';
+import Price from './components/price/index';
 import Footer from './components/footer';
 
 export function App(sources: Sources): Sinks {
