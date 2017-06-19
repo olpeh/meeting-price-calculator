@@ -4,14 +4,15 @@ import 'jsverify';
 import calculatePrice from './utils';
 import { hourlyToTickRatio } from './utils';
 
-function almostEqual(x: number, y: number) {
-  return x.toPrecision(3) === y.toPrecision(3);
-}
-
 describe('calculatePrice tests', () => {
   it('should work for all numbers', () => {
-    const property = forall(integer, integer, integer, (x, y, z) =>
-      almostEqual(calculatePrice(x, y, z), x * y * z * hourlyToTickRatio)
+    const property = forall(
+      integer,
+      integer,
+      integer,
+      (x, y, z) =>
+        calculatePrice(x, y, z) + calculatePrice(x, y, z) ===
+        2 * calculatePrice(x, y, z)
     );
 
     assert(property, {
@@ -20,14 +21,20 @@ describe('calculatePrice tests', () => {
     });
   });
 
-  it('should conform to the Associative Property', () => {
-    const property = forall(integer, integer, integer, (x, y, z) =>
-      almostEqual(calculatePrice(x, y, z), hourlyToTickRatio * z * x * y)
-    );
+  it('should return correct value', () => {
+    const personAmount = 12;
+    const avgPrice = 88;
+    const tick = 60 * 60 * 2;
+    const expected = 2112;
+    const actual = calculatePrice(personAmount, avgPrice, tick);
+    expect(actual).toBe(expected);
+  });
 
-    assert(property, {
-      quiet: false,
-      size: 60 * 60 * 24
-    });
+  it('should return 0 if tick is zero', () => {
+    const personAmount = 4;
+    const avgPrice = 100;
+    const tick = 0;
+    const actual = calculatePrice(personAmount, avgPrice, tick);
+    expect(actual).toBe(0);
   });
 });
