@@ -1,18 +1,18 @@
 import xs from 'xstream';
 import { VNode, div, select, option, span, label } from '@cycle/dom';
 import { State } from '../../interfaces';
-import calculatePrice from './utils';
+import calculatePrice, { formatPrice } from '../../utils/price';
 
-function renderPrice(price: number, currency: string): VNode {
-  const displayPrice: string = price.toFixed(2);
+function renderPrice(
+  personAmountValue: number,
+  avgPriceValue: number,
+  tick: number,
+  currency: string
+): VNode {
+  const price: number = calculatePrice(personAmountValue, avgPriceValue, tick);
   return div('.Price-actual', [
     div('.Price-label', 'This meeting has cost'),
-    div(
-      '.Price-value',
-      currency === '€'
-        ? `${displayPrice.replace('.', ',')} ${currency}`
-        : `${currency} ${displayPrice}`
-    )
+    div('.Price-value', formatPrice(price, currency))
   ]);
 }
 
@@ -32,19 +32,14 @@ export default function view(
         ]
       ) =>
         div('.Price', [
-          renderPrice(
-            calculatePrice(personAmount.value, avgPrice.value, tick),
-            currency
-          ),
+          renderPrice(personAmount.value, avgPrice.value, tick, currency),
           div('.PriceInputs', [
             personAmountVDom,
             div('.price-result', [
               label('.total-price-label', 'Total price per hour'),
               div(
                 '.total-price-value',
-                currency === '€'
-                  ? `${personAmount.value * avgPrice.value} ${currency}`
-                  : `${currency} ${personAmount.value * avgPrice.value}`
+                formatPrice(personAmount.value * avgPrice.value, currency)
               ),
               div('.currency', [
                 span('.currency-label.label', 'Currency'),
