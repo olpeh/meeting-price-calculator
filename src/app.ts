@@ -6,7 +6,7 @@ import Header from './components/header';
 import Price from './components/price/index';
 import Footer from './components/footer';
 
-export function App(sources: Sources): Sinks {
+export default function App(sources: Sources): Sinks {
   const headerVDom$: xs<VNode> = Header();
   const footerVDom$: xs<VNode> = Footer();
   const priceSinks: Sinks = Price(sources);

@@ -6,7 +6,7 @@ import { timeDriver } from '@cycle/time';
 import onionify from 'cycle-onionify';
 
 import { Component } from './interfaces';
-import { App } from './app';
+import App from './app';
 
 const main: Component = App;
 

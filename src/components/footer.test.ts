@@ -2,7 +2,7 @@ import xs from 'xstream';
 import { assert } from 'jsverify';
 import { VNode } from '@cycle/dom';
 import { withTime } from 'cyclejs-test-helpers';
-import footer from './footer';
+import Footer from './footer';
 const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
 
@@ -25,7 +25,7 @@ describe('Footer Component', () => {
       </div>
     `;
 
-    const vdom$ = footer();
+    const vdom$ = Footer();
     const html$ = vdom$.map(toHtml);
     const expected$ = xs.of(expectedHTML);
     const looksLike = withTime(Time =>
@@ -35,7 +35,7 @@ describe('Footer Component', () => {
   });
 
   it('should match a snapshot correctly', () => {
-    const vdom$: xs<VNode> = footer();
+    const vdom$: xs<VNode> = Footer();
     const html$: xs<{}> = vdom$.map(toHtml);
     expect(html$).toMatchSnapshot();
   });
