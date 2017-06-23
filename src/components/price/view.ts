@@ -20,7 +20,7 @@ export default function view(
   state$: xs<State>,
   personAmountSliderVDom$: xs<VNode>,
   avgPriceSliderVDom$: xs<VNode>
-) {
+): xs<VNode> {
   return xs
     .combine(state$, personAmountSliderVDom$, avgPriceSliderVDom$)
     .map(

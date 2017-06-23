@@ -16,13 +16,44 @@ const testOptions: Options = {
 };
 
 describe('Price Component', () => {
+  const personAmountSliderDOM = xs.of(
+    div('.SliderInput', [p('personAmountSliderDOM')])
+  );
+  const avgPriceSliderDOM = xs.of(
+    div('.SliderInput', [p('avgPriceSliderDOM')])
+  );
+
+  it('should match a snapshot correctly', () => {
+    const state$: xs<State> = xs.of({
+      tick: 120,
+      currency: '€',
+      personAmount: {
+        description: 'Person amount',
+        unit: 'persons',
+        min: 0,
+        max: 100,
+        step: 1,
+        value: 8
+      },
+      avgPrice: {
+        description: 'Average price',
+        unit: '€ / h',
+        min: 0,
+        max: 1500,
+        step: 5,
+        value: 105
+      }
+    });
+    const vdom$: xs<VNode> = view(
+      state$,
+      personAmountSliderDOM,
+      avgPriceSliderDOM
+    );
+    const html$: xs<{}> = vdom$.map(toHtml);
+    expect(html$).toMatchSnapshot();
+  });
+
   it('should render correctly', () => {
-    const personAmountSliderDOM = xs.of(
-      div('.SliderInput', [p('personAmountSliderDOM')])
-    );
-    const avgPriceSliderDOM = xs.of(
-      div('.SliderInput', [p('avgPriceSliderDOM')])
-    );
     const expectedHTML = (
       tick: number,
       personAmount: number,
