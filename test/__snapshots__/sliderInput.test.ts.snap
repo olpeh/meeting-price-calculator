@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SliderInput Component should match a snapshot correctly 1`] = `
+Stream {
+  "_d": false,
+  "_dl": Object {},
+  "_err": Object {},
+  "_ils": Array [],
+  "_prod": MapOp {
+    "f": [Function],
+    "ins": Stream {
+      "_d": false,
+      "_dl": Object {},
+      "_err": Object {},
+      "_ils": Array [],
+      "_prod": MapOp {
+        "f": [Function],
+        "ins": Stream {
+          "_d": false,
+          "_dl": Object {},
+          "_err": Object {},
+          "_ils": Array [],
+          "_prod": FromArray {
+            "a": Array [
+              Object {
+                "description": "Person amount",
+                "max": 100,
+                "min": 0,
+                "step": 1,
+                "unit": "persons",
+                "value": 8,
+              },
+            ],
+            "type": "fromArray",
+          },
+          "_stopID": Object {},
+          "_target": Object {},
+        },
+        "out": Object {},
+        "type": "map",
+      },
+      "_stopID": Object {},
+      "_target": Object {},
+    },
+    "out": Object {},
+    "type": "map",
+  },
+  "_stopID": Object {},
+  "_target": Object {},
+}
+`;
