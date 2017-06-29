@@ -2,10 +2,10 @@ import xs from 'xstream';
 import { assert } from 'jsverify';
 import { mockDOMSource, VNode } from '@cycle/dom';
 import { mockTimeSource } from '@cycle/time';
-import { Sources, Sinks } from './interfaces';
+import { Sources, Sinks } from '../src/interfaces';
 import { withTime } from 'cyclejs-test-helpers';
 import onionify from 'cycle-onionify';
-import App from './app';
+import App from '../src/app';
 const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
 

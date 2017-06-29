@@ -1,7 +1,7 @@
 import xs from 'xstream';
 import { VNode, div, select, option, span, label } from '@cycle/dom';
 import { State } from '../../interfaces';
-import calculatePrice, { formatPrice } from '../../utils/price';
+import calculatePrice, { formatPrice } from '../../utils/priceUtils';
 
 function renderPrice(
   personAmountValue: number,

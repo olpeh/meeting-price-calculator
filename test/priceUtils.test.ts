@@ -1,7 +1,7 @@
 import xs from 'xstream';
 import { forall, integer, assert, Options } from 'jsverify';
 
-import calculatePrice, { formatPrice } from './price';
+import calculatePrice, { formatPrice } from '../src/utils/priceUtils';
 
 const testOptions: Options = {
   tests: 100,

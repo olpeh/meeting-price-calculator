@@ -1,11 +1,11 @@
 import xs from 'xstream';
 import { forall, integer, assert, Options } from 'jsverify';
 
-import { State } from '../../interfaces';
-import calculatePrice, { formatPrice } from '../../utils/price';
+import { State } from '../src/interfaces';
+import calculatePrice, { formatPrice } from '../src/utils/priceUtils';
 import { VNode, div, p } from '@cycle/dom';
 import { withTime } from 'cyclejs-test-helpers';
-import view from './view';
+import view from '../src/components/price/view';
 const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
 

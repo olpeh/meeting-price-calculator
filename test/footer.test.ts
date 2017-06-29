@@ -2,7 +2,7 @@ import xs from 'xstream';
 import { assert } from 'jsverify';
 import { VNode } from '@cycle/dom';
 import { withTime } from 'cyclejs-test-helpers';
-import Footer from './footer';
+import Footer from '../src/components/footer';
 const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
 
