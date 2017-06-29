@@ -29,4 +29,63 @@ describe('SliderInput Component', () => {
     const html$: xs<{}> = vdom$.map(toHtml);
     expect(html$).toMatchSnapshot();
   });
+
+  it('should render correctly', () => {
+    const expectedHTML = (
+      description: string,
+      unit: string,
+      min: number,
+      max: number,
+      step: number,
+      value: number
+    ) => `
+        <div class="SliderInput">
+          <label class="SliderInput-label">
+            Person amount
+          </label>
+          <input class="SliderInput-input"
+                 type="number"
+                 min="${min}"
+                 max="${max}"
+                 step="${step}"
+                 value="${value}">
+          <span class="SliderInput-unit">
+            persons
+          </span>
+          <input class="SliderInput-input"
+                 type="range"
+                 min="${min}"
+                 max="${max}"
+                 step="${step}"
+                 value="${value}">
+        </div>
+      `;
+
+    const property = forall(
+      integer,
+      integer,
+      integer,
+      (tck: number, pa: number, avg: number) =>
+        withTime(Time => {
+          const state$: xs<SliderInputState> = xs.of({
+            description: 'Person amount',
+            unit: 'persons',
+            min: 0,
+            max: 100,
+            step: 1,
+            value: 8
+          });
+          const vdom$ = view(state$);
+          const html$ = vdom$.map(toHtml);
+          const expected$ = state$.map(
+            ({ description, unit, min, max, step, value }) =>
+              expectedHTML(description, unit, min, max, step, value)
+          );
+
+          Time.assertEqual(html$, expected$, htmlLooksLike);
+        })
+    );
+
+    return assert(property, testOptions);
+  });
 });
