@@ -24,11 +24,11 @@ export type Component = (s: Sources) => Sinks;
 export interface State {
   tick: number;
   currency: string;
-  personAmount: SliderState;
-  avgPrice: SliderState;
+  personAmount: SliderInputState;
+  avgPrice: SliderInputState;
 }
 
-export interface SliderState {
+export interface SliderInputState {
   description: string;
   unit: string;
   min: number;
@@ -37,4 +37,9 @@ export interface SliderState {
   value: number;
 }
 
-export type Reducer = (prev?: State) => State | undefined;
+export type SliderReducer = (
+  prev?: SliderInputState
+) => SliderInputState | undefined;
+export type DefaultReducer = (prev?: State) => State | undefined;
+
+export type Reducer = DefaultReducer | SliderReducer;
