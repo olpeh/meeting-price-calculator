@@ -3,6 +3,7 @@ import { VNode, DOMSource } from '@cycle/dom';
 import { HTTPSource, RequestOptions } from '@cycle/http';
 import { TimeSource } from '@cycle/time/dist/time-source';
 import { StateSource } from 'cycle-onionify';
+import * as moment from 'moment';
 
 export type Sources = {
   DOM: DOMSource;
@@ -22,7 +23,8 @@ export type Sinks = {
 export type Component = (s: Sources) => Sinks;
 
 export interface State {
-  tick: number;
+  startTime: moment.Moment;
+  duration: number;
   currency: string;
   personAmount: SliderInputState;
   avgPrice: SliderInputState;

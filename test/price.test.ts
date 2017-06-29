@@ -8,6 +8,7 @@ import { withTime } from 'cyclejs-test-helpers';
 import view from '../src/components/price/view';
 const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
+import * as moment from 'moment';
 
 const testOptions: Options = {
   tests: 100,
@@ -24,8 +25,10 @@ describe('Price Component', () => {
   );
 
   it('should match a snapshot correctly', () => {
+    const startTime = moment('2017-06-29T21:19:35.849Z');
     const state$: xs<State> = xs.of({
-      tick: 120,
+      startTime: startTime,
+      duration: 12000,
       currency: '€',
       personAmount: {
         description: 'Person amount',
@@ -54,14 +57,15 @@ describe('Price Component', () => {
   });
 
   it('should render correctly', () => {
+    const startTime = moment();
     const expectedHTML = (
-      tick: number,
+      duration: number,
       personAmount: number,
       avgPrice: number,
       currency: string
     ) => {
       const priceSoFar = formatPrice(
-        calculatePrice(personAmount, avgPrice, tick),
+        calculatePrice(personAmount, avgPrice, duration),
         currency
       );
       const totalPricePerHour = formatPrice(personAmount * avgPrice, currency);
@@ -90,6 +94,14 @@ describe('Price Component', () => {
             <p>avgPriceSliderDOM</p>
           </div>
         </div>
+        <div class="duration-details">
+          <div class="start-time">Start time: ${startTime.format(
+            'HH:mm:ss'
+          )}</div>
+          <div class="duration">Duration: ${moment
+            .duration(duration, 'seconds')
+            .humanize()}</div>
+        </div>
       `;
     };
 
@@ -100,7 +112,8 @@ describe('Price Component', () => {
       (tck: number, pa: number, avg: number) =>
         withTime(Time => {
           const state$: xs<State> = xs.of({
-            tick: tck,
+            startTime: startTime,
+            duration: tck,
             currency: '€',
             personAmount: {
               description: 'Person amount',
@@ -124,8 +137,13 @@ describe('Price Component', () => {
           const html$ = vdom$.map(toHtml);
 
           const expected$ = state$.map(
-            ({ tick, personAmount, avgPrice, currency }) =>
-              expectedHTML(tick, personAmount.value, avgPrice.value, currency)
+            ({ duration, personAmount, avgPrice, currency }) =>
+              expectedHTML(
+                duration,
+                personAmount.value,
+                avgPrice.value,
+                currency
+              )
           );
 
           Time.assertEqual(html$, expected$, htmlLooksLike);

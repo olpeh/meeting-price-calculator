@@ -42,6 +42,7 @@ Stream {
                         "value": 105,
                       },
                       "currency": "€",
+                      "duration": 12000,
                       "personAmount": Object {
                         "description": "Person amount",
                         "max": 100,
@@ -50,7 +51,7 @@ Stream {
                         "unit": "persons",
                         "value": 8,
                       },
-                      "tick": 120,
+                      "startTime": "2017-06-29T21:19:35.849Z",
                     },
                   ],
                   "type": "fromArray",

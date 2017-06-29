@@ -2,14 +2,19 @@ import xs from 'xstream';
 import { VNode, div, select, option, span, label } from '@cycle/dom';
 import { State } from '../../interfaces';
 import calculatePrice, { formatPrice } from '../../utils/priceUtils';
+import * as moment from 'moment';
 
 function renderPrice(
   personAmountValue: number,
   avgPriceValue: number,
-  tick: number,
+  duration: number,
   currency: string
 ): VNode {
-  const price: number = calculatePrice(personAmountValue, avgPriceValue, tick);
+  const price: number = calculatePrice(
+    personAmountValue,
+    avgPriceValue,
+    duration
+  );
   return div('.Price-actual', [
     div('.Price-label', 'This meeting has cost'),
     div('.Price-value', formatPrice(price, currency))
@@ -26,13 +31,13 @@ export default function view(
     .map(
       (
         [
-          { tick, personAmount, avgPrice, currency },
+          { startTime, duration, personAmount, avgPrice, currency },
           personAmountVDom,
           avgPriceVDom
         ]
       ) =>
         div('.Price', [
-          renderPrice(personAmount.value, avgPrice.value, tick, currency),
+          renderPrice(personAmount.value, avgPrice.value, duration, currency),
           div('.PriceInputs', [
             personAmountVDom,
             div('.price-result', [
@@ -47,6 +52,13 @@ export default function view(
               ])
             ]),
             avgPriceVDom
+          ]),
+          div('.duration-details', [
+            div('.start-time', `Start time: ${startTime.format('HH:mm:ss')}`),
+            div(
+              '.duration',
+              `Duration: ${moment.duration(duration, 'seconds').humanize()}`
+            )
           ])
         ])
     );

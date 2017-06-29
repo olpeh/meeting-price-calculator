@@ -2,6 +2,7 @@ import xs from 'xstream';
 import { TimeSource } from '@cycle/time/dist/time-source';
 import { State, Reducer } from '../../interfaces';
 import { Action } from './intent';
+import * as moment from 'moment';
 
 export default function model(
   action$: xs<Action>,
@@ -11,7 +12,8 @@ export default function model(
     prev?: State
   ): State {
     return {
-      tick: 0,
+      startTime: moment(),
+      duration: 0,
       currency: '€',
       personAmount: {
         description: 'Person amount',
@@ -37,7 +39,7 @@ export default function model(
       function reducer(prevState: State) {
         return {
           ...prevState,
-          tick: i
+          duration: moment().diff(prevState.startTime, 'seconds')
         };
       }
   );
