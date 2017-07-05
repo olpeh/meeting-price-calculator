@@ -2,6 +2,7 @@ import xs from 'xstream';
 import { VNode, DOMSource } from '@cycle/dom';
 import { HTTPSource, RequestOptions } from '@cycle/http';
 import { TimeSource } from '@cycle/time/dist/time-source';
+import { StorageSource, StorageRequest } from '@cycle/storage';
 import { StateSource } from 'cycle-onionify';
 import * as moment from 'moment';
 
@@ -10,6 +11,7 @@ export type Sources = {
   onion: StateSource<State>;
   HTTP: HTTPSource;
   Time: TimeSource;
+  storage: StorageSource;
   props$: any;
 };
 
@@ -18,6 +20,7 @@ export type Sinks = {
   onion: xs<Reducer>;
   HTTP?: xs<RequestOptions>;
   value$?: xs<number>;
+  storage: xs<StorageRequest>;
 };
 
 export type Component = (s: Sources) => Sinks;
@@ -36,6 +39,7 @@ export interface SliderInputState {
   min: number;
   max: number;
   step: number;
+  key: string;
   value: number;
 }
 

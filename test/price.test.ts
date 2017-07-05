@@ -36,6 +36,7 @@ describe('Price Component', () => {
         min: 0,
         max: 100,
         step: 1,
+        key: 'person-amount',
         value: 8
       },
       avgPrice: {
@@ -44,6 +45,7 @@ describe('Price Component', () => {
         min: 0,
         max: 1500,
         step: 5,
+        key: 'average-price',
         value: 105
       }
     });
@@ -121,6 +123,7 @@ describe('Price Component', () => {
               min: -1000000000000000000000000000000,
               max: 1000000000000000000000000000000,
               step: 1,
+              key: 'person-amount',
               value: pa
             },
             avgPrice: {
@@ -129,6 +132,7 @@ describe('Price Component', () => {
               min: -1000000000000000000000000000000,
               max: 1000000000000000000000000000000,
               step: 5,
+              key: 'average-price',
               value: avg
             }
           });

@@ -1,5 +1,6 @@
 import xs from 'xstream';
 import isolate from '@cycle/isolate';
+import { StorageRequest } from '@cycle/storage';
 import { Sources, Sinks, SliderInputState, Reducer } from '../../interfaces';
 import { VNode } from '@cycle/dom';
 import model from './model';
@@ -13,10 +14,15 @@ export default function SliderInput(sources: Sources): Sinks {
   const action$: xs<SliderInputAction> = intent(sources.DOM);
   const reducer$: xs<Reducer> = (model(action$) as any) as xs<Reducer>;
   const vdom$: xs<VNode> = view(state$);
+  const storageRequest$: xs<StorageRequest> = action$.map(action => ({
+    key: action.key,
+    value: action.value
+  }));
 
   const sinks: Sinks = {
     DOM: vdom$,
-    onion: reducer$
+    onion: reducer$,
+    storage: storageRequest$
   };
 
   return sinks;

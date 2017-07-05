@@ -35,6 +35,7 @@ Stream {
                     Object {
                       "avgPrice": Object {
                         "description": "Average price",
+                        "key": "average-price",
                         "max": 1500,
                         "min": 0,
                         "step": 5,
@@ -45,6 +46,7 @@ Stream {
                       "duration": 12000,
                       "personAmount": Object {
                         "description": "Person amount",
+                        "key": "person-amount",
                         "max": 100,
                         "min": 0,
                         "step": 1,

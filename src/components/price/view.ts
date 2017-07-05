@@ -48,7 +48,24 @@ export default function view(
               ),
               div('.currency', [
                 span('.currency-label.label', 'Currency'),
-                select('.currency-select', [option('€'), option('$')])
+                select('.currency-select', [
+                  option(
+                    {
+                      attrs: {
+                        selected: currency === '€' ? 'selected' : null
+                      }
+                    },
+                    ['€']
+                  ),
+                  option(
+                    {
+                      attrs: {
+                        selected: currency === '$' ? 'selected' : null
+                      }
+                    },
+                    ['$']
+                  )
+                ])
               ])
             ]),
             avgPriceVDom

@@ -1,5 +1,6 @@
 import xs from 'xstream';
 import isolate from '@cycle/isolate';
+import { StorageRequest, StorageSource } from '@cycle/storage';
 import { Sources, Sinks, State, Reducer } from '../../interfaces';
 import { Action } from './intent';
 import model from './model';
@@ -16,7 +17,11 @@ export default function Price(sources: Sources): Sinks {
   );
   const avgPriceSlider: Sinks = isolate(SliderInput, 'avgPrice')(sources);
 
-  const parentReducer$: xs<Reducer> = model(action$, sources.Time);
+  const parentReducer$: xs<Reducer> = model(
+    action$,
+    sources.Time,
+    sources.storage
+  );
   const personAmountReducer$: xs<Reducer> = personAmountSlider.onion;
   const avgPriceReducer$: xs<Reducer> = avgPriceSlider.onion;
   const reducer$: xs<Reducer> = xs.merge(
@@ -27,9 +32,43 @@ export default function Price(sources: Sources): Sinks {
 
   const vdom$ = view(state$, personAmountSlider.DOM, avgPriceSlider.DOM);
 
+  const initialCurrencyRequest$ = sources.storage.local
+    .getItem('currency')
+    .filter(e => e === null)
+    .mapTo({ key: 'currency', value: '€' });
+
+  const initialPersonAmountRequest$ = sources.storage.local
+    .getItem('person-amount')
+    .filter(e => e === null)
+    .mapTo({ key: 'person-amount', value: 4 });
+
+  const initialAveragePriceRequest$ = sources.storage.local
+    .getItem('average-price')
+    .filter(e => e === null)
+    .mapTo({ key: 'average-price', value: 100 });
+
+  const initialStorageRequest$ = xs.merge(
+    initialCurrencyRequest$,
+    initialPersonAmountRequest$,
+    initialAveragePriceRequest$
+  );
+
+  const currencyRequest$: xs<StorageRequest> = action$.map(action => ({
+    key: action.key,
+    value: action.value
+  }));
+
+  const storageRequest$ = xs.merge(
+    initialStorageRequest$,
+    currencyRequest$,
+    personAmountSlider.storage,
+    avgPriceSlider.storage
+  );
+
   const sinks = {
     DOM: vdom$,
-    onion: reducer$
+    onion: reducer$,
+    storage: storageRequest$
   };
 
   return sinks;

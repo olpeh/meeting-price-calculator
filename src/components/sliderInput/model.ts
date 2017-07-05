@@ -13,6 +13,7 @@ export default function model(action$: xs<SliderInputAction>): xs<Reducer> {
         min: 0,
         max: 100,
         step: 1,
+        key: 'key',
         value: 100
       };
     } else {

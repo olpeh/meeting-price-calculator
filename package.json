@@ -42,6 +42,7 @@
     "@cycle/http": "^13.2.0",
     "@cycle/isolate": "^2.1.0",
     "@cycle/run": "^3.0.0",
+    "@cycle/storage": "^4.0.0",
     "@cycle/time": "^0.7.3",
     "cycle-onionify": "^3.3.0",
     "gh-pages": "^0.12.0",

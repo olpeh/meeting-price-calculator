@@ -17,7 +17,8 @@ export default function App(sources: Sources): Sinks {
 
   const sinks: Sinks = {
     DOM: vdom$,
-    onion: priceSinks.onion
+    onion: priceSinks.onion,
+    storage: priceSinks.storage
   };
 
   return sinks;
