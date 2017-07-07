@@ -12,7 +12,6 @@ export type SliderInputAction = ValueChangeAction;
 export default function intent(domSource): xs<SliderInputAction> {
   return domSource.select('.SliderInput-input').events('input').map(inputEv => {
     const inputVal = parseInt((inputEv.target as HTMLInputElement).value);
-    console.log(inputEv.target.dataset.key);
     return {
       type: 'VALUE_CHANGE',
       payload: inputVal,

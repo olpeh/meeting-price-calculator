@@ -10,7 +10,7 @@ export default function model(action$: xs<SliderInputAction>): xs<Reducer> {
       return {
         description: 'description',
         unit: 'unit',
-        min: 0,
+        min: 1,
         max: 100,
         step: 1,
         key: 'key',

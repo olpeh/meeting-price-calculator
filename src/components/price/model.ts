@@ -31,7 +31,7 @@ export default function model(
         personAmount: {
           description: 'Person amount',
           unit: 'persons',
-          min: 0,
+          min: 1,
           max: 100,
           step: 1,
           key: 'person-amount',
@@ -40,7 +40,7 @@ export default function model(
         avgPrice: {
           description: 'Average price',
           unit: `${previousCurrency} / h`,
-          min: 0,
+          min: 5,
           max: 1500,
           step: 5,
           key: 'average-price',
