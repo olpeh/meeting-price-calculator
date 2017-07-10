@@ -24,29 +24,32 @@ export default function model(
     .map(
       ([previousCurrency, previousPersonAmount, previousAvgPrice]) => (
         prev?: State
-      ): State => ({
-        startTime: moment(),
-        duration: 0,
-        currency: previousCurrency,
-        personAmount: {
-          description: 'Person amount',
-          unit: 'persons',
-          min: 1,
-          max: 100,
-          step: 1,
-          key: 'person-amount',
-          value: previousPersonAmount
-        },
-        avgPrice: {
-          description: 'Average price',
-          unit: `${previousCurrency} / h`,
-          min: 5,
-          max: 1500,
-          step: 5,
-          key: 'average-price',
-          value: previousAvgPrice
-        }
-      })
+      ): State =>
+        prev !== undefined
+          ? prev
+          : {
+              startTime: moment(),
+              duration: 0,
+              currency: previousCurrency,
+              personAmount: {
+                description: 'Person amount',
+                unit: 'persons',
+                min: 1,
+                max: 100,
+                step: 1,
+                key: 'person-amount',
+                value: previousPersonAmount
+              },
+              avgPrice: {
+                description: 'Average price',
+                unit: `${previousCurrency} / h`,
+                min: 5,
+                max: 1500,
+                step: 5,
+                key: 'average-price',
+                value: previousAvgPrice
+              }
+            }
     );
 
   const tickReducer$ = timeSource.periodic(1000).map(

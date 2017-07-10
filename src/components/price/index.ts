@@ -30,8 +30,6 @@ export default function Price(sources: Sources): Sinks {
     avgPriceReducer$
   );
 
-  const vdom$ = view(state$, personAmountSlider.DOM, avgPriceSlider.DOM);
-
   const initialCurrencyRequest$ = sources.storage.local
     .getItem('currency')
     .filter(e => e === null)
@@ -64,6 +62,8 @@ export default function Price(sources: Sources): Sinks {
     personAmountSlider.storage,
     avgPriceSlider.storage
   );
+
+  const vdom$ = view(state$, personAmountSlider.DOM, avgPriceSlider.DOM);
 
   const sinks = {
     DOM: vdom$,
