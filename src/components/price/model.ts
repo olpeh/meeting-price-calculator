@@ -33,7 +33,7 @@ export default function model(
               currency: previousCurrency,
               personAmount: {
                 description: 'Person amount',
-                unit: 'persons',
+                unit: previousPersonAmount > 1 ? 'persons' : 'person',
                 min: 1,
                 max: 100,
                 step: 1,
