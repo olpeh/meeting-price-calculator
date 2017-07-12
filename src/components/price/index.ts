@@ -17,38 +17,39 @@ export default function Price(sources: Sources): Sinks {
   );
   const avgPriceSlider: Sinks = isolate(SliderInput, 'avgPrice')(sources);
 
+  const initialCurrencyRequest$ = sources.storage.local
+    .getItem('currency')
+    .map(e => (e !== null ? e : '€'))
+    .map(e => ({ key: 'currency', value: e }));
+
+  const initialPersonAmountRequest$ = sources.storage.local
+    .getItem('person-amount')
+    .map(e => (e !== null ? e : 4))
+    .map(e => ({ key: 'person-amount', value: e }));
+
+  const initialAveragePriceRequest$ = sources.storage.local
+    .getItem('average-price')
+    .map(e => (e !== null ? e : 100))
+    .map(e => ({ key: 'average-price', value: e }));
+
+  const initialStorageRequest$ = xs.combine(
+    initialCurrencyRequest$,
+    initialPersonAmountRequest$,
+    initialAveragePriceRequest$
+  );
+
   const parentReducer$: xs<Reducer> = model(
     action$,
     sources.Time,
-    sources.storage
+    initialStorageRequest$
   );
+
   const personAmountReducer$: xs<Reducer> = personAmountSlider.onion;
   const avgPriceReducer$: xs<Reducer> = avgPriceSlider.onion;
   const reducer$: xs<Reducer> = xs.merge(
     parentReducer$,
     personAmountReducer$,
     avgPriceReducer$
-  );
-
-  const initialCurrencyRequest$ = sources.storage.local
-    .getItem('currency')
-    .filter(e => e === null)
-    .mapTo({ key: 'currency', value: '€' });
-
-  const initialPersonAmountRequest$ = sources.storage.local
-    .getItem('person-amount')
-    .filter(e => e === null)
-    .mapTo({ key: 'person-amount', value: 4 });
-
-  const initialAveragePriceRequest$ = sources.storage.local
-    .getItem('average-price')
-    .filter(e => e === null)
-    .mapTo({ key: 'average-price', value: 100 });
-
-  const initialStorageRequest$ = xs.merge(
-    initialCurrencyRequest$,
-    initialPersonAmountRequest$,
-    initialAveragePriceRequest$
   );
 
   const currencyRequest$: xs<StorageRequest> = action$.map(action => ({

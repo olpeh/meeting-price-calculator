@@ -1,6 +1,5 @@
 import xs from 'xstream';
 import { TimeSource } from '@cycle/time/dist/time-source';
-import { StorageSource } from '@cycle/storage';
 import { State, Reducer } from '../../interfaces';
 import { Action } from './intent';
 import * as moment from 'moment';
@@ -8,49 +7,40 @@ import * as moment from 'moment';
 export default function model(
   action$: xs<Action>,
   timeSource: TimeSource,
-  storageSource: StorageSource
+  initialStorageRequest$: any
 ): xs<Reducer> {
-  const previousCurrency$: xs<string> = storageSource.local
-    .getItem('currency')
-    .startWith('€');
-  const previousPersonAmount$: xs<number> = storageSource.local
-    .getItem('person-amount')
-    .startWith(4);
-  const previousAvgPrice$: xs<number> = storageSource.local
-    .getItem('average-price')
-    .startWith(100);
-  const initReducer$: xs<Reducer> = xs
-    .combine(previousCurrency$, previousPersonAmount$, previousAvgPrice$)
-    .map(
-      ([previousCurrency, previousPersonAmount, previousAvgPrice]) => (
-        prev?: State
-      ): State =>
-        prev !== undefined
-          ? prev
-          : {
-              startTime: moment(),
-              duration: 0,
-              currency: previousCurrency,
-              personAmount: {
-                description: 'Person amount',
-                unit: previousPersonAmount > 1 ? 'persons' : 'person',
-                min: 1,
-                max: 100,
-                step: 1,
-                key: 'person-amount',
-                value: previousPersonAmount
-              },
-              avgPrice: {
-                description: 'Average price',
-                unit: `${previousCurrency} / h`,
-                min: 5,
-                max: 1500,
-                step: 5,
-                key: 'average-price',
-                value: previousAvgPrice
-              }
+  const initReducer$: xs<
+    Reducer
+  > = initialStorageRequest$.map(
+    ([previousCurrency, previousPersonAmount, previousAvgPrice]) => (
+      prev?: State
+    ): State =>
+      prev !== undefined
+        ? prev
+        : {
+            startTime: moment(),
+            duration: 0,
+            currency: previousCurrency.value,
+            personAmount: {
+              description: 'Person amount',
+              unit: previousPersonAmount.value > 1 ? 'persons' : 'person',
+              min: 1,
+              max: 100,
+              step: 1,
+              key: 'person-amount',
+              value: previousPersonAmount.value
+            },
+            avgPrice: {
+              description: 'Average price',
+              unit: `${previousCurrency.value} / h`,
+              min: 5,
+              max: 1500,
+              step: 5,
+              key: 'average-price',
+              value: previousAvgPrice.value
             }
-    );
+          }
+  );
 
   const tickReducer$ = timeSource.periodic(1000).map(
     i =>
