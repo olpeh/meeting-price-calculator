@@ -4,7 +4,7 @@ import { forall, integer, assert, Options } from 'jsverify';
 import calculatePrice, { formatPrice } from '../src/utils/priceUtils';
 
 const testOptions: Options = {
-  tests: 100,
+  tests: 50,
   quiet: false,
   size: 60 * 60 * 24
 };

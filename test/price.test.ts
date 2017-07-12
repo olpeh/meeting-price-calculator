@@ -11,7 +11,7 @@ const toHtml = require('snabbdom-to-html');
 import * as moment from 'moment';
 
 const testOptions: Options = {
-  tests: 100,
+  tests: 50,
   quiet: false,
   size: 60 * 60 * 24
 };
