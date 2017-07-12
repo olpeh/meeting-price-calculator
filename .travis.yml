@@ -1,3 +1,24 @@
+sudo: false
 language: node_js
 node_js:
-  - "7"
+- '7'
+cache:
+  directories:
+  - node_modules
+branches:
+  only:
+  - master
+notifications:
+  email: false
+before_script:
+- npm prune
+script:
+- npm test
+- npm run build
+after_success:
+- bash ./scripts/deploy.sh
+env:
+  global:
+  - GH_USER: olpeh
+  - GH_REPO: meeting-price-calculator
+  - secure: T/6wOHgP5sYKg5nzyBAPy7HjIRT4cSHdr/OHpJHhtmLqONlDKObLxNXaPxDP8nr8rhe9I/QOHXSAUXHsExXrQfpZbqibH7D3tQsMGSCglC2yeDVBShEmZVhKlzVFE8Itox2JHzDjaeLBntQssGGIwv6dmuD2KaX0TULbl1MR86bY43wsy3Gil6A+ZRWHJQS1aYL0ZpbHNbUTT1UiEjw0mbKSHWQq0DtKtCYax8qHkrMrpqhQp3owGz7X3OkVohc7cfPT8QMPR7P0vyBjzdfXbMMTy0jB/BD0/P/2nn8IPt9zx+Wxr5YBdEC3cBfabN17wK0tphCCrRWH79MPyF0ITfQiHfaZrS59ohjXduIpIYZ/6VrMhs4gDrK5lsrb/L6nNdqQFQjXaGh/HkT2lz3f6HV3Rl6cNb5ZHsGjql/LKy5D1laYnCLHLqu0JVccL/dX9kHaD8ux0sUruJGV8kZHPiOnEGDw4pHxK1Zph6eDPDpW1TUgnoK/T2r2W918oHNzK2XumI3HCUdj189+bWBpGQ02+LIp2QqB2jLycnBrXXC1hCUPD4OuNAThZYu8lNexQ8gBAwzY1d7Nf2/AnsD1tphotkw+NHhf341mnRfiE6ve8SWIxV2Su6R2UyChdci9OuU9Wv+JAWO+YdT1/w9XaLkkqHihK8TNqij/SgKTBhc=
