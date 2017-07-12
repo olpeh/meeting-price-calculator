@@ -7,7 +7,7 @@ if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
 echo "Starting to update gh-pages\n"
 
 #copy data we're interested in to other place
-cp -R build $HOME/build
+cp -R build/* $HOME/build/
 
 #go to home and setup git
 cd $HOME
