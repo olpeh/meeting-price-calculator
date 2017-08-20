@@ -7,8 +7,8 @@ html {
 body {
   width: 100%;
   height: 100%;
-  background: #1E1E1E;
-  color: #96C4CA;
+  background: #1e1e1e;
+  color: #96c4ca;
 }
 
 #app {
@@ -24,7 +24,9 @@ body {
     align-content: stretch;
     align-items: flex-start;
 
-    .Header, .Price, .Footer {
+    .Header,
+    .Price,
+    .Footer {
       align-self: stretch;
       display: flex;
       flex-direction: column;
@@ -100,8 +102,8 @@ body {
 
           input[type="number"] {
             background: rgba(150, 196, 202, 0.25);
-            color: #96C4CA;
-            border-color: #96C4CA;
+            color: #96c4ca;
+            border-color: #96c4ca;
             font-weight: bold;
             padding: 7px 10px;
             font-size: 16px;
@@ -115,6 +117,10 @@ body {
             z-index: 0;
           }
         }
+      }
+
+      .duration-details .start-time .reset-button {
+        margin-left: 10px;
       }
     }
 

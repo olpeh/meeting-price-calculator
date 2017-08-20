@@ -1,5 +1,5 @@
 import xs from 'xstream';
-import { VNode, div, select, option, span, label } from '@cycle/dom';
+import { VNode, div, select, option, span, label, button } from '@cycle/dom';
 import { State } from '../../interfaces';
 import calculatePrice, { formatPrice } from '../../utils/priceUtils';
 import * as moment from 'moment';
@@ -71,7 +71,10 @@ export default function view(
             avgPriceVDom
           ]),
           div('.duration-details', [
-            div('.start-time', `Start time: ${startTime.format('HH:mm:ss')}`),
+            div('.start-time', [
+              span(`Start time: ${startTime.format('HH:mm:ss')}`),
+              button('.reset-button', 'Reset')
+            ]),
             div(
               '.duration',
               `Duration: ${moment.duration(duration, 'seconds').humanize()}`

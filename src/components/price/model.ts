@@ -68,5 +68,22 @@ export default function model(
         }
     );
 
-  return xs.merge(initReducer$, tickReducer$, currencyChangeReducer$);
+  const resetClickReducer$ = action$
+    .filter(ac => ac.type === 'RESET_CLICKED')
+    .map(
+      ac =>
+        function resetClickReducer(prevState: State): State {
+          return {
+            ...prevState,
+            startTime: moment()
+          };
+        }
+    );
+
+  return xs.merge(
+    initReducer$,
+    tickReducer$,
+    currencyChangeReducer$,
+    resetClickReducer$
+  );
 }

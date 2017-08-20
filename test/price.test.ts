@@ -108,9 +108,10 @@ describe('Price Component', () => {
           </div>
         </div>
         <div class="duration-details">
-          <div class="start-time">Start time: ${startTime.format(
-            'HH:mm:ss'
-          )}</div>
+          <div class="start-time">
+            <span>Start time: ${startTime.format('HH:mm:ss')}</span>
+            <button class="reset-button">Reset</button>
+          </div>
           <div class="duration">Duration: ${moment
             .duration(duration, 'seconds')
             .humanize()}</div>
