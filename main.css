@@ -6,8 +6,8 @@ html {
 body {
   width: 100%;
   height: 100%;
-  background: #1E1E1E;
-  color: #96C4CA; }
+  background: #1e1e1e;
+  color: #96c4ca; }
 
 #app {
   width: 100%;
@@ -20,7 +20,9 @@ body {
     justify-content: flex-start;
     align-content: stretch;
     align-items: flex-start; }
-    #app .App-flex-container .Header, #app .App-flex-container .Price, #app .App-flex-container .Footer {
+    #app .App-flex-container .Header,
+    #app .App-flex-container .Price,
+    #app .App-flex-container .Footer {
       align-self: stretch;
       display: flex;
       flex-direction: column;
@@ -71,8 +73,8 @@ body {
           position: relative; }
           #app .App-flex-container .Price .PriceInputs .SliderInput input[type="number"] {
             background: rgba(150, 196, 202, 0.25);
-            color: #96C4CA;
-            border-color: #96C4CA;
+            color: #96c4ca;
+            border-color: #96c4ca;
             font-weight: bold;
             padding: 7px 10px;
             font-size: 16px; }
@@ -82,6 +84,8 @@ body {
             text-align: right;
             right: 30px;
             z-index: 0; }
+      #app .App-flex-container .Price .duration-details .start-time .reset-button {
+        margin-left: 10px; }
     #app .App-flex-container .Footer {
       flex: 1 1 auto;
       flex-direction: row;
