@@ -1,7 +1,11 @@
 import xs from 'xstream';
 import { forall, integer, assert, Options } from 'jsverify';
 
-import calculatePrice, { formatPrice } from '../src/utils/priceUtils';
+import calculatePrice, {
+  toDisplayPrice,
+  separateThousands,
+  formatPrice
+} from '../src/utils/priceUtils';
 
 const testOptions: Options = {
   tests: 50,
@@ -57,7 +61,7 @@ describe('Price utils', () => {
     it('should return correctly formatted string for €', () => {
       const price = 1234.56789;
       const currency = '€';
-      const expected = '1234,57 €';
+      const expected = '1 234,57 €';
       const actual = formatPrice(price, currency);
       expect(actual).toBe(expected);
     });
@@ -65,7 +69,7 @@ describe('Price utils', () => {
     it('should return correctly formatted string for $', () => {
       const price = 1234.56789;
       const currency = '$';
-      const expected = '$ 1234.57';
+      const expected = '$ 1,234.57';
       const actual = formatPrice(price, currency);
       expect(actual).toBe(expected);
     });
@@ -73,8 +77,36 @@ describe('Price utils', () => {
     it('should format an integer correctly', () => {
       const price = 15656;
       const currency = '€';
-      const expected = '15656,00 €';
+      const expected = '15 656,00 €';
       const actual = formatPrice(price, currency);
+      expect(actual).toBe(expected);
+    });
+  });
+
+  describe('toDisplayPrice', () => {
+    it('should return correctly formatted string a price with separator #', () => {
+      const price = 1234.56789;
+      const separator = '#';
+      const expected = '1#234.57';
+      const actual = toDisplayPrice(price, separator);
+      expect(actual).toBe(expected);
+    });
+
+    it('should return correctly formatted string a price with separator " "', () => {
+      const price = 123456789.1234567;
+      const separator = ' ';
+      const expected = '123 456 789.12';
+      const actual = toDisplayPrice(price, separator);
+      expect(actual).toBe(expected);
+    });
+  });
+
+  describe('separateThousands', () => {
+    it('should return correctly formatted string with thousands separated by #', () => {
+      const price = '123456789';
+      const separator = '#';
+      const expected = '123#456#789';
+      const actual = separateThousands(price, separator);
       expect(actual).toBe(expected);
     });
   });
