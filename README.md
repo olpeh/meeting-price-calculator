@@ -4,7 +4,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/olpeh/meeting-price-calculator/pulls)
 [![license](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://github.com/olpeh/meeting-price-calculator/blob/master/LICENSE)
 
-Meeting price calculator
+![Meeting Price Calculator GIF](meeting-price-calculator.gif)
 
 ## Development
 - Install dependencies: `npm install`
