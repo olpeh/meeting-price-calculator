@@ -71,7 +71,7 @@ body {
           flex-direction: column;
           justify-content: space-between;
           position: relative; }
-          #app .App-flex-container .Price .PriceInputs .SliderInput input[type="number"] {
+          #app .App-flex-container .Price .PriceInputs .SliderInput input[type='number'] {
             background: rgba(150, 196, 202, 0.25);
             color: #96c4ca;
             border-color: #96c4ca;
