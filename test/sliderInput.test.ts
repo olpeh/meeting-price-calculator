@@ -10,7 +10,7 @@ const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
 
 const testOptions: Options = {
-  tests: 50,
+  tests: 25,
   quiet: false,
   size: 60 * 60 * 24
 };
@@ -18,12 +18,12 @@ const testOptions: Options = {
 describe('SliderInput Component', () => {
   let originalTimeout;
 
-  beforeEach(function() {
+  beforeEach(() => {
     originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
   });
 
-  afterEach(function() {
+  afterEach(() => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
   });
 

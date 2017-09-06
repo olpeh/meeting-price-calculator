@@ -1,5 +1,4 @@
 import xs from 'xstream';
-import { assert } from 'jsverify';
 import { VNode } from '@cycle/dom';
 import { withTime } from 'cyclejs-test-helpers';
 import Header from '../src/components/header';
@@ -7,17 +6,6 @@ const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
 
 describe('Header Component', () => {
-  let originalTimeout;
-
-  beforeEach(function() {
-    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
-  });
-
-  afterEach(function() {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
-  });
-
   it('should render correctly', () => {
     const expectedHTML = `
       <div class="Header">
@@ -31,7 +19,7 @@ describe('Header Component', () => {
     const looksLike = withTime(Time =>
       Time.assertEqual(html$, expected$, htmlLooksLike)
     );
-    return assert(looksLike);
+    return looksLike();
   });
 
   it('should match a snapshot correctly', () => {

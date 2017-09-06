@@ -1,5 +1,4 @@
 import xs from 'xstream';
-import { assert } from 'jsverify';
 import { VNode } from '@cycle/dom';
 import { withTime } from 'cyclejs-test-helpers';
 import Footer from '../src/components/footer';
@@ -7,17 +6,6 @@ const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
 
 describe('Footer Component', () => {
-  let originalTimeout;
-
-  beforeEach(function() {
-    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
-  });
-
-  afterEach(function() {
-    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
-  });
-
   it('should render correctly', () => {
     const expectedHTML = `
       <div class="Footer">
@@ -42,7 +30,7 @@ describe('Footer Component', () => {
     const looksLike = withTime(Time =>
       Time.assertEqual(html$, expected$, htmlLooksLike)
     );
-    return assert(looksLike);
+    return looksLike();
   });
 
   it('should match a snapshot correctly', () => {
