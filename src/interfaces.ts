@@ -1,7 +1,7 @@
 import xs from 'xstream';
 import { VNode, DOMSource } from '@cycle/dom';
 import { HTTPSource, RequestOptions } from '@cycle/http';
-import { TimeSource } from '@cycle/time/dist/time-source';
+import { TimeSource } from '@cycle/time';
 import { StorageSource, StorageRequest } from '@cycle/storage';
 import { StateSource } from 'cycle-onionify';
 import * as moment from 'moment';

@@ -10,15 +10,18 @@ export interface ValueChangeAction {
 export type SliderInputAction = ValueChangeAction;
 
 export default function intent(domSource): xs<SliderInputAction> {
-  return domSource.select('.SliderInput-input').events('input').map(inputEv => {
-    const inputVal: number = parseInt(
-      (inputEv.target as HTMLInputElement).value
-    );
-    return {
-      type: 'VALUE_CHANGE',
-      payload: inputVal,
-      key: inputEv.target.dataset.key,
-      value: inputVal
-    } as ValueChangeAction;
-  });
+  return domSource
+    .select('.SliderInput-input')
+    .events('input')
+    .map(inputEv => {
+      const inputVal: number = parseInt(
+        (inputEv.target as HTMLInputElement).value
+      );
+      return {
+        type: 'VALUE_CHANGE',
+        payload: inputVal,
+        key: inputEv.target.dataset.key,
+        value: inputVal
+      } as ValueChangeAction;
+    });
 }

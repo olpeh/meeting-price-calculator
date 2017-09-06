@@ -1,5 +1,5 @@
 import xs from 'xstream';
-import { TimeSource } from '@cycle/time/dist/time-source';
+import { TimeSource } from '@cycle/time';
 import { State, Reducer } from '../../interfaces';
 import { Action } from './intent';
 import * as moment from 'moment';
