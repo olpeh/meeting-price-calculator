@@ -21,6 +21,26 @@ function renderPrice(
   ]);
 }
 
+function renderOption(currency: string, selectedCurrency: string) {
+  return currency === selectedCurrency
+    ? option(
+        {
+          attrs: {
+            selected: 'selected'
+          }
+        },
+        [currency]
+      )
+    : option([currency]);
+}
+
+function renderCurrencySelect(selectedCurrency: string) {
+  return select('.currency-select', [
+    renderOption('€', selectedCurrency),
+    renderOption('$', selectedCurrency)
+  ]);
+}
+
 export default function view(
   state$: xs<State>,
   personAmountSliderVDom$: xs<VNode>,
@@ -48,24 +68,7 @@ export default function view(
               ),
               div('.currency', [
                 span('.currency-label.label', 'Currency'),
-                select('.currency-select', [
-                  option(
-                    {
-                      attrs: {
-                        selected: currency === '€' ? 'selected' : null
-                      }
-                    },
-                    ['€']
-                  ),
-                  option(
-                    {
-                      attrs: {
-                        selected: currency === '$' ? 'selected' : null
-                      }
-                    },
-                    ['$']
-                  )
-                ])
+                renderCurrencySelect(currency)
               ])
             ]),
             avgPriceVDom
