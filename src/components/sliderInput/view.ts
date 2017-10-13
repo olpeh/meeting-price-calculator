@@ -12,9 +12,9 @@ export default function view(state$: xs<SliderInputState>): xs<VNode> {
           'data-key': key,
           min,
           max,
-          step,
-          value
-        }
+          step
+        },
+        props: { value }
       }),
       span('.SliderInput-unit', unit),
       input('.SliderInput-input', {
@@ -23,9 +23,9 @@ export default function view(state$: xs<SliderInputState>): xs<VNode> {
           'data-key': key,
           min,
           max,
-          step,
-          value
-        }
+          step
+        },
+        props: { value }
       })
     ])
   );
