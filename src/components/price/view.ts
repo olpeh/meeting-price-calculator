@@ -75,7 +75,7 @@ export default function view(
           ]),
           div('.duration-details', [
             div('.start-time', [
-              span(`Start time: ${startTime.format('HH:mm:ss')}`),
+              span(`Start time: ${moment(startTime).format('HH:mm:ss')}`),
               button('.reset-button', 'Reset')
             ]),
             div(

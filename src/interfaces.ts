@@ -18,9 +18,6 @@ export type Sources = {
 export type Sinks = {
   DOM: xs<VNode>;
   onion: xs<Reducer>;
-  HTTP?: xs<RequestOptions>;
-  value$?: xs<number>;
-  storage: xs<StorageRequest>;
 };
 
 export type Component = (s: Sources) => Sinks;

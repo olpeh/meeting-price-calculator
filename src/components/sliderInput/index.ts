@@ -14,15 +14,10 @@ export default function SliderInput(sources: Sources): Sinks {
   const action$: xs<SliderInputAction> = intent(sources.DOM);
   const reducer$: xs<Reducer> = (model(action$) as any) as xs<Reducer>;
   const vdom$: xs<VNode> = view(state$);
-  const storageRequest$: xs<StorageRequest> = action$.map(action => ({
-    key: action.key,
-    value: action.value
-  }));
 
   const sinks: Sinks = {
     DOM: vdom$,
-    onion: reducer$,
-    storage: storageRequest$
+    onion: reducer$
   };
 
   return sinks;
