@@ -1,7 +1,7 @@
 import xs from 'xstream';
 import { forall, integer, assert, Options } from 'jsverify';
 
-import { SliderInputState } from '../src/interfaces';
+import { State } from '../src/components/sliderInput';
 import calculatePrice, { formatPrice } from '../src/utils/priceUtils';
 import { VNode, div, p } from '@cycle/dom';
 import { withTime } from 'cyclejs-test-helpers';
@@ -28,7 +28,7 @@ describe('SliderInput Component', () => {
   });
 
   it('should match a snapshot correctly', () => {
-    const state$: xs<SliderInputState> = xs.of({
+    const state$: xs<State> = xs.of({
       description: 'Person amount',
       unit: 'persons',
       min: 0,
@@ -79,7 +79,7 @@ describe('SliderInput Component', () => {
       integer,
       (tck: number, pa: number, avg: number) =>
         withTime(Time => {
-          const state$: xs<SliderInputState> = xs.of({
+          const state$: xs<State> = xs.of({
             description: 'Person amount',
             unit: 'persons',
             min: 0,

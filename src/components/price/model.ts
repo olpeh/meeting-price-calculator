@@ -1,6 +1,6 @@
 import xs from 'xstream';
 import { TimeSource } from '@cycle/time';
-import { State, Reducer } from '../../interfaces';
+import { State, Reducer } from './index';
 import { PriceActions } from './intent';
 import * as moment from 'moment';
 

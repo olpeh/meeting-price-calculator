@@ -1,6 +1,6 @@
 import xs from 'xstream';
 import { VNode, div, select, option, span, label, button } from '@cycle/dom';
-import { State } from '../../interfaces';
+import { State } from './index';
 import calculatePrice, { formatPrice } from '../../utils/priceUtils';
 import * as moment from 'moment';
 

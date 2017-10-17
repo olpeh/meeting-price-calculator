@@ -1,7 +1,7 @@
 import xs from 'xstream';
 import { forall, integer, assert, Options } from 'jsverify';
 
-import { State } from '../src/interfaces';
+import { State } from '../src/components/price';
 import calculatePrice, { formatPrice } from '../src/utils/priceUtils';
 import { VNode, div, p } from '@cycle/dom';
 import { withTime } from 'cyclejs-test-helpers';

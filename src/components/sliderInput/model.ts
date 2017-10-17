@@ -1,10 +1,10 @@
 import xs from 'xstream';
-import { SliderInputState, Reducer } from '../../interfaces';
+import { State, Reducer } from './index';
 import { SliderInputActions } from './intent';
 
 export default function model(actions: SliderInputActions): xs<Reducer> {
   const defaultReducer$: xs<Reducer> = xs.of(
-    (prev?: SliderInputState): SliderInputState =>
+    (prev?: State): State =>
       prev !== undefined
         ? prev
         : {
@@ -27,13 +27,11 @@ export default function model(actions: SliderInputActions): xs<Reducer> {
 
   const valueChangeReducer$: xs<
     Reducer
-  > = actions.ValueChangeAction$.map(
-    value => (prevState: SliderInputState): SliderInputState => ({
-      ...prevState,
-      unit: setUnit(prevState.unit, prevState.key, value),
-      value
-    })
-  );
+  > = actions.ValueChangeAction$.map(value => (prevState: State): State => ({
+    ...prevState,
+    unit: setUnit(prevState.unit, prevState.key, value),
+    value
+  }));
 
   return xs.merge(defaultReducer$, valueChangeReducer$);
 }

@@ -1,8 +1,8 @@
 import xs from 'xstream';
 import { VNode, div, input, span, label } from '@cycle/dom';
-import { SliderInputState } from '../../interfaces';
+import { State } from './index';
 
-export default function view(state$: xs<SliderInputState>): xs<VNode> {
+export default function view(state$: xs<State>): xs<VNode> {
   return state$.map(({ description, unit, min, max, step, key, value }) =>
     div('.SliderInput', [
       label('.SliderInput-label', description),

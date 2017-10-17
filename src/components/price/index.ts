@@ -1,10 +1,21 @@
 import xs from 'xstream';
 import isolate from '@cycle/isolate';
-import { Sources, Sinks, State, Reducer } from '../../interfaces';
+import { Sources, Sinks } from '../../interfaces';
 import model from './model';
 import view from './view';
 import intent, { PriceActions } from './intent';
-import SliderInput from '../sliderInput';
+import SliderInput, { State as SliderInputState } from '../sliderInput';
+import * as moment from 'moment';
+
+export interface State {
+  startTime: moment.Moment;
+  duration: number;
+  currency: string;
+  personAmount: SliderInputState;
+  avgPrice: SliderInputState;
+}
+
+export type Reducer = (prev?: State) => State | undefined;
 
 export default function Price(sources: Sources): Sinks {
   const actions: PriceActions = intent(sources.DOM);
