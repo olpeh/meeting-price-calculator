@@ -1,39 +1,23 @@
 import xs from 'xstream';
 
-export interface CurrencyChangeAction {
-  type: 'CURRENCY_CHANGE';
-  payload: string;
-  key: string;
-  value: string;
+export interface PriceActions {
+  currencyChangeAction$: xs<string>;
+  resetClickedAction$: xs<null>;
 }
 
-export interface ResetClickedAction {
-  type: 'RESET_CLICKED';
-  payload: string;
-  key: string;
-  value: string;
-}
-
-export type Action = CurrencyChangeAction | ResetClickedAction;
-
-export default function intent(domSource): xs<Action> {
-  const currencyChangeAction$: xs<Action> = domSource
+export default function intent(domSource): PriceActions {
+  const currencyChangeAction$: xs<string> = domSource
     .select('.currency-select')
     .events('change')
-    .map(inputEv => {
-      const inputVal = (inputEv.target as HTMLInputElement).value;
-      return {
-        type: 'CURRENCY_CHANGE',
-        payload: inputVal,
-        key: 'currency',
-        value: inputVal
-      } as CurrencyChangeAction;
-    });
+    .map(inputEv => (inputEv.target as HTMLInputElement).value);
 
-  const resetClickedAction$: xs<Action> = domSource
+  const resetClickedAction$: xs<null> = domSource
     .select('.reset-button')
     .events('click')
-    .mapTo({ type: 'RESET_CLICKED' } as ResetClickedAction);
+    .mapTo(null);
 
-  return xs.merge(currencyChangeAction$, resetClickedAction$);
+  return {
+    currencyChangeAction$,
+    resetClickedAction$
+  };
 }

@@ -1,27 +1,16 @@
 import xs from 'xstream';
 
-export interface ValueChangeAction {
-  type: 'VALUE_CHANGE';
-  payload: number;
-  key: string;
-  value: number;
+export interface SliderInputActions {
+  ValueChangeAction$: xs<number>;
 }
 
-export type SliderInputAction = ValueChangeAction;
-
-export default function intent(domSource): xs<SliderInputAction> {
-  return domSource
+export default function intent(domSource): SliderInputActions {
+  const ValueChangeAction$ = domSource
     .select('.SliderInput-input')
     .events('input')
-    .map(inputEv => {
-      const inputVal: number = parseInt(
-        (inputEv.target as HTMLInputElement).value
-      );
-      return {
-        type: 'VALUE_CHANGE',
-        payload: inputVal,
-        key: inputEv.target.dataset.key,
-        value: inputVal
-      } as ValueChangeAction;
-    });
+    .map(inputEv => parseInt((inputEv.target as HTMLInputElement).value));
+
+  return {
+    ValueChangeAction$
+  };
 }

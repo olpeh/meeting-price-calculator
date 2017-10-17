@@ -1,11 +1,11 @@
 import xs from 'xstream';
 import { TimeSource } from '@cycle/time';
 import { State, Reducer } from '../../interfaces';
-import { Action } from './intent';
+import { PriceActions } from './intent';
 import * as moment from 'moment';
 
 export default function model(
-  action$: xs<Action>,
+  actions: PriceActions,
   timeSource: TimeSource
 ): xs<Reducer> {
   const initReducer$: xs<Reducer> = xs.of(
@@ -44,23 +44,23 @@ export default function model(
       duration: moment().diff(prevState.startTime, 'seconds')
     }));
 
-  const currencyChangeReducer$ = action$
-    .filter(ac => ac.type === 'CURRENCY_CHANGE')
-    .map(ac => (prevState: State): State => ({
+  const currencyChangeReducer$ = actions.currencyChangeAction$.map(
+    currency => (prevState: State): State => ({
       ...prevState,
-      currency: ac.payload,
+      currency,
       avgPrice: {
         ...prevState.avgPrice,
-        unit: `${ac.payload} / h`
+        unit: `${currency} / h`
       }
-    }));
+    })
+  );
 
-  const resetClickReducer$ = action$
-    .filter(ac => ac.type === 'RESET_CLICKED')
-    .map(ac => (prevState: State): State => ({
+  const resetClickReducer$ = actions.resetClickedAction$.mapTo(
+    (prevState: State): State => ({
       ...prevState,
       startTime: moment()
-    }));
+    })
+  );
 
   return xs.merge(
     initReducer$,
