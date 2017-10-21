@@ -17,16 +17,24 @@ export interface State {
 export type Reducer = (prev?: State) => State | undefined;
 
 export const lens = {
-  get: (state: AppState): State => ({
-    startTime: state.startTime,
-    duration: state.duration,
-    currency: state.currency,
-    totalPrice: calculatePrice(
-      state.personAmount.value,
-      state.avgPrice.value,
-      state.duration
-    )
-  }),
+  get: (state: AppState): State =>
+    state
+      ? {
+          startTime: state.startTime,
+          duration: state.duration,
+          currency: state.currency,
+          totalPrice: calculatePrice(
+            state.personAmount.value,
+            state.avgPrice.value,
+            state.duration
+          )
+        }
+      : {
+          startTime: moment(),
+          duration: 0,
+          currency: '€',
+          totalPrice: 0
+        },
 
   set: (state: AppState, childState: State) => ({
     ...state,

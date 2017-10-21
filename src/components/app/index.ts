@@ -23,6 +23,8 @@ export interface State {
 export type Reducer = (prev?: State) => State | undefined;
 
 export default function App(sources: Sources): Sinks {
+  const parentReducer$ = model();
+
   const headerVDom$: xs<VNode> = Header();
   const tickerSinks = isolate(Ticker, { onion: tickerLens })(sources);
   const controlsSinks = isolate(Controls, { onion: controlsLens })(sources);
@@ -44,8 +46,6 @@ export default function App(sources: Sources): Sinks {
         footer
       ])
     );
-
-  const parentReducer$ = model();
 
   const reducer$ = xs.merge(
     parentReducer$,
