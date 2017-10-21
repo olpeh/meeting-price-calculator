@@ -8,7 +8,7 @@ import storageify from 'cycle-storageify';
 import storageDriver from '@cycle/storage';
 
 import { Component } from './interfaces';
-import App from './app';
+import App from './components/app';
 
 const main: Component = App;
 

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ticker Component should match a snapshot correctly 1`] = `
+Stream {
+  "_d": false,
+  "_dl": Object {},
+  "_err": Object {},
+  "_ils": Array [],
+  "_prod": MapOp {
+    "f": [Function],
+    "ins": Stream {
+      "_d": false,
+      "_dl": Object {},
+      "_err": Object {},
+      "_ils": Array [],
+      "_prod": MapOp {
+        "f": [Function],
+        "ins": Stream {
+          "_d": false,
+          "_dl": Object {},
+          "_err": Object {},
+          "_ils": Array [],
+          "_prod": FromArray {
+            "a": Array [
+              Object {
+                "currency": "€",
+                "duration": 12000,
+                "startTime": "2017-06-29T21:19:35.849Z",
+                "totalPrice": 123456,
+              },
+            ],
+            "type": "fromArray",
+          },
+          "_stopID": Object {},
+          "_target": Object {},
+        },
+        "out": Object {},
+        "type": "map",
+      },
+      "_stopID": Object {},
+      "_target": Object {},
+    },
+    "out": Object {},
+    "type": "map",
+  },
+  "_stopID": Object {},
+  "_target": Object {},
+}
+`;

@@ -1,9 +1,10 @@
 import xs from 'xstream';
 import { VNode } from '@cycle/dom';
 import { withTime } from 'cyclejs-test-helpers';
-import Header from '../src/components/header';
 const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
+
+import Header from '../src/components/header';
 
 describe('Header Component', () => {
   it('should render correctly', () => {

@@ -1,9 +1,10 @@
 import xs from 'xstream';
 import { VNode } from '@cycle/dom';
 import { withTime } from 'cyclejs-test-helpers';
-import Footer from '../src/components/footer';
 const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
+
+import Footer from '../src/components/footer';
 
 describe('Footer Component', () => {
   it('should render correctly', () => {

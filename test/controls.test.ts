@@ -1,14 +1,14 @@
 import xs from 'xstream';
 import { forall, integer, assert, Options } from 'jsverify';
-
-import { State } from '../src/components/price';
-import calculatePrice, { formatPrice } from '../src/utils/priceUtils';
 import { VNode, div, p } from '@cycle/dom';
 import { withTime } from 'cyclejs-test-helpers';
-import view from '../src/components/price/view';
 const htmlLooksLike = require('html-looks-like');
 const toHtml = require('snabbdom-to-html');
 import * as moment from 'moment';
+
+import view from '../src/components/controls/view';
+import { State } from '../src/components/controls';
+import calculatePrice, { formatPrice } from '../src/utils/priceUtils';
 
 const testOptions: Options = {
   tests: 25,
@@ -16,7 +16,7 @@ const testOptions: Options = {
   size: 60 * 60 * 24
 };
 
-describe('Price Component', () => {
+describe('Controls Component', () => {
   let originalTimeout;
 
   beforeEach(() => {
@@ -38,8 +38,6 @@ describe('Price Component', () => {
   it('should match a snapshot correctly', () => {
     const startTime = moment('2017-06-29T21:19:35.849Z');
     const state$: xs<State> = xs.of({
-      startTime: startTime,
-      duration: 12000,
       currency: '€',
       personAmount: {
         description: 'Person amount',
@@ -72,23 +70,13 @@ describe('Price Component', () => {
   it('should render correctly', () => {
     const startTime = moment();
     const expectedHTML = (
-      duration: number,
+      currency: string,
       personAmount: number,
-      avgPrice: number,
-      currency: string
+      avgPrice: number
     ) => {
-      const priceSoFar = formatPrice(
-        calculatePrice(personAmount, avgPrice, duration),
-        currency
-      );
       const totalPricePerHour = formatPrice(personAmount * avgPrice, currency);
       return `
-        <div class="Price">
-          <div class="Price-actual">
-          <div class="Price-label">This meeting has cost</div>
-          <div class="Price-value">${priceSoFar}</div>
-        </div>
-        <div class="PriceInputs">
+        <div class="Controls">
           <div class="SliderInput">
             <p>personAmountSliderDOM</p>
           </div>
@@ -107,63 +95,42 @@ describe('Price Component', () => {
             <p>avgPriceSliderDOM</p>
           </div>
         </div>
-        <div class="duration-details">
-          <div class="start-time">
-            <span>Start time: ${startTime.format('HH:mm:ss')}</span>
-            <button class="reset-button">Reset</button>
-          </div>
-          <div class="duration">Duration: ${moment
-            .duration(duration, 'seconds')
-            .humanize()}</div>
-        </div>
       `;
     };
 
-    const property = forall(
-      integer,
-      integer,
-      integer,
-      (tck: number, pa: number, avg: number) =>
-        withTime(Time => {
-          const state$: xs<State> = xs.of({
-            startTime: startTime,
-            duration: tck,
-            currency: '€',
-            personAmount: {
-              description: 'Person amount',
-              unit: 'persons',
-              min: -1000000000000000000000000000000,
-              max: 1000000000000000000000000000000,
-              step: 1,
-              key: 'person-amount',
-              value: pa
-            },
-            avgPrice: {
-              description: 'Average price',
-              unit: '€ / h',
-              min: -1000000000000000000000000000000,
-              max: 1000000000000000000000000000000,
-              step: 5,
-              key: 'average-price',
-              value: avg
-            }
-          });
+    const property = forall(integer, integer, (pa: number, avg: number) =>
+      withTime(Time => {
+        const state$: xs<State> = xs.of({
+          currency: '€',
+          personAmount: {
+            description: 'Person amount',
+            unit: 'persons',
+            min: -1000000,
+            max: 1000000,
+            step: 1,
+            key: 'person-amount',
+            value: pa
+          },
+          avgPrice: {
+            description: 'Average price',
+            unit: '€ / h',
+            min: -1000000,
+            max: 1000000,
+            step: 5,
+            key: 'average-price',
+            value: avg
+          }
+        });
 
-          const vdom$ = view(state$, personAmountSliderDOM, avgPriceSliderDOM);
-          const html$ = vdom$.map(toHtml);
+        const vdom$ = view(state$, personAmountSliderDOM, avgPriceSliderDOM);
+        const html$ = vdom$.map(toHtml);
 
-          const expected$ = state$.map(
-            ({ duration, personAmount, avgPrice, currency }) =>
-              expectedHTML(
-                duration,
-                personAmount.value,
-                avgPrice.value,
-                currency
-              )
-          );
+        const expected$ = state$.map(({ currency, personAmount, avgPrice }) =>
+          expectedHTML(currency, personAmount.value, avgPrice.value)
+        );
 
-          Time.assertEqual(html$, expected$, htmlLooksLike);
-        })
+        Time.assertEqual(html$, expected$, htmlLooksLike);
+      })
     );
 
     return assert(property, testOptions);

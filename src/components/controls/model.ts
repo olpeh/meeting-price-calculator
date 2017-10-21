@@ -1,20 +1,13 @@
 import xs from 'xstream';
-import { TimeSource } from '@cycle/time';
 import { State, Reducer } from './index';
-import { PriceActions } from './intent';
-import * as moment from 'moment';
+import { Actions } from './intent';
 
-export default function model(
-  actions: PriceActions,
-  timeSource: TimeSource
-): xs<Reducer> {
+export default function model(actions: Actions): xs<Reducer> {
   const initReducer$: xs<Reducer> = xs.of(
     (prev?: State): State =>
       prev !== undefined
         ? prev
         : {
-            startTime: moment(),
-            duration: 0,
             currency: '€',
             personAmount: {
               description: 'Person amount',
@@ -37,13 +30,6 @@ export default function model(
           }
   );
 
-  const tickReducer$ = timeSource
-    .periodic(1000)
-    .map(i => (prevState: State) => ({
-      ...prevState,
-      duration: moment().diff(prevState.startTime, 'seconds')
-    }));
-
   const currencyChangeReducer$ = actions.currencyChangeAction$.map(
     currency => (prevState: State): State => ({
       ...prevState,
@@ -55,17 +41,5 @@ export default function model(
     })
   );
 
-  const resetClickReducer$ = actions.resetClickedAction$.mapTo(
-    (prevState: State): State => ({
-      ...prevState,
-      startTime: moment()
-    })
-  );
-
-  return xs.merge(
-    initReducer$,
-    tickReducer$,
-    currencyChangeReducer$,
-    resetClickReducer$
-  );
+  return xs.merge(initReducer$, currencyChangeReducer$);
 }

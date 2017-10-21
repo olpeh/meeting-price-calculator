@@ -4,7 +4,7 @@ import { HTTPSource, RequestOptions } from '@cycle/http';
 import { TimeSource } from '@cycle/time';
 import { StorageSource, StorageRequest } from '@cycle/storage';
 import { StateSource } from 'cycle-onionify';
-import { State } from './components/price';
+import { State } from './components/app';
 
 export type Sources = {
   DOM: DOMSource;

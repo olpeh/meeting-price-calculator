@@ -1,7 +1,6 @@
 import xs from 'xstream';
-import isolate from '@cycle/isolate';
-import { StorageRequest } from '@cycle/storage';
 import { Sources, Sinks } from '../../interfaces';
+import { State as AppState } from '../app';
 import { VNode } from '@cycle/dom';
 import model from './model';
 import view from './view';
@@ -18,6 +17,24 @@ export interface State {
 }
 
 export type Reducer = (prev?: State) => State | undefined;
+
+export const personAmountLens = {
+  get: (state: AppState): State => state.personAmount,
+
+  set: (state: AppState, childState: State) => ({
+    ...state,
+    personAmount: childState
+  })
+};
+
+export const avgPriceLens = {
+  get: (state: AppState): State => state.avgPrice,
+
+  set: (state: AppState, childState: State) => ({
+    ...state,
+    avgPrice: childState
+  })
+};
 
 export default function SliderInput(sources: Sources): Sinks {
   const actions: SliderInputActions = intent(sources.DOM);

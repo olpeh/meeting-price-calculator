@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Price Component should match a snapshot correctly 1`] = `
+exports[`Controls Component should match a snapshot correctly 1`] = `
 Stream {
   "_d": false,
   "_dl": Object {},
@@ -43,7 +43,6 @@ Stream {
                         "value": 105,
                       },
                       "currency": "€",
-                      "duration": 12000,
                       "personAmount": Object {
                         "description": "Person amount",
                         "key": "person-amount",
@@ -53,7 +52,6 @@ Stream {
                         "unit": "persons",
                         "value": 8,
                       },
-                      "startTime": "2017-06-29T21:19:35.849Z",
                     },
                   ],
                   "type": "fromArray",
