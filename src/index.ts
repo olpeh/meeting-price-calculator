@@ -12,9 +12,7 @@ import App from './components/app';
 
 const main: Component = App;
 
-const wrappedMain = onionify(
-  storageify(main, { key: 'meeting-price-calculator' })
-);
+const wrappedMain = onionify(storageify(main, { key: 'mpc-state' }));
 
 const drivers: any = {
   DOM: makeDOMDriver('#app'),
