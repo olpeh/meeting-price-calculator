@@ -17,8 +17,7 @@ export default function model(actions: Actions): xs<Reducer> {
   const currencyChangeReducer$ = actions.currencyChangeAction$.map(
     currency => (prevState: State): State => ({
       ...prevState,
-      currency,
-      avgPrice: prevState.avgPrice
+      currency
     })
   );
 
