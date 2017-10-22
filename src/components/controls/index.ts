@@ -15,8 +15,8 @@ import SliderInput, {
 
 export interface State {
   currency: string;
-  personAmount: SliderInputState;
-  avgPrice: SliderInputState;
+  personAmount: number;
+  avgPrice: number;
 }
 
 export type Reducer = (prev?: State) => State | undefined;

@@ -10,14 +10,13 @@ import Ticker, { lens as tickerLens } from '../ticker';
 import Controls, { lens as controlsLens } from '../controls';
 import Duration, { lens as durationLens } from '../duration';
 import Footer from '../footer';
-import { State as SliderInputState } from '../sliderInput';
 
 export interface State {
   startTime: moment.Moment;
   duration: number;
   currency: string;
-  personAmount: SliderInputState;
-  avgPrice: SliderInputState;
+  personAmount: number;
+  avgPrice: number;
 }
 
 export type Reducer = (prev?: State) => State | undefined;

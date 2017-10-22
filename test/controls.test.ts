@@ -39,24 +39,8 @@ describe('Controls Component', () => {
     const startTime = moment('2017-06-29T21:19:35.849Z');
     const state$: xs<State> = xs.of({
       currency: '€',
-      personAmount: {
-        description: 'Person amount',
-        unit: 'persons',
-        min: 0,
-        max: 100,
-        step: 1,
-        key: 'person-amount',
-        value: 8
-      },
-      avgPrice: {
-        description: 'Average price',
-        unit: '€ / h',
-        min: 0,
-        max: 1500,
-        step: 5,
-        key: 'average-price',
-        value: 105
-      }
+      personAmount: 8,
+      avgPrice: 105
     });
     const vdom$: xs<VNode> = view(
       state$,
@@ -102,31 +86,15 @@ describe('Controls Component', () => {
       withTime(Time => {
         const state$: xs<State> = xs.of({
           currency: '€',
-          personAmount: {
-            description: 'Person amount',
-            unit: 'persons',
-            min: -1000000,
-            max: 1000000,
-            step: 1,
-            key: 'person-amount',
-            value: pa
-          },
-          avgPrice: {
-            description: 'Average price',
-            unit: '€ / h',
-            min: -1000000,
-            max: 1000000,
-            step: 5,
-            key: 'average-price',
-            value: avg
-          }
+          personAmount: pa,
+          avgPrice: avg
         });
 
         const vdom$ = view(state$, personAmountSliderDOM, avgPriceSliderDOM);
         const html$ = vdom$.map(toHtml);
 
         const expected$ = state$.map(({ currency, personAmount, avgPrice }) =>
-          expectedHTML(currency, personAmount.value, avgPrice.value)
+          expectedHTML(currency, personAmount, avgPrice)
         );
 
         Time.assertEqual(html$, expected$, htmlLooksLike);

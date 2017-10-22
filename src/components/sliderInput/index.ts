@@ -12,27 +12,39 @@ export interface State {
   min: number;
   max: number;
   step: number;
-  key: string;
   value: number;
 }
 
 export type Reducer = (prev?: State) => State | undefined;
 
 export const personAmountLens = {
-  get: (state: AppState): State => state.personAmount,
+  get: (state: AppState): State => ({
+    description: 'Person amount',
+    unit: state.personAmount > 1 ? 'persons' : 'person',
+    min: 1,
+    max: 100,
+    step: 1,
+    value: state.personAmount
+  }),
 
   set: (state: AppState, childState: State) => ({
     ...state,
-    personAmount: childState
+    personAmount: childState.value
   })
 };
 
 export const avgPriceLens = {
-  get: (state: AppState): State => state.avgPrice,
-
+  get: (state: AppState): State => ({
+    description: 'Average price',
+    unit: `${state.currency} / h`,
+    min: 5,
+    max: 1500,
+    step: 5,
+    value: state.avgPrice
+  }),
   set: (state: AppState, childState: State) => ({
     ...state,
-    avgPrice: childState
+    avgPrice: childState.value
   })
 };
 

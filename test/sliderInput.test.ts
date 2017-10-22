@@ -34,7 +34,6 @@ describe('SliderInput Component', () => {
       min: 0,
       max: 100,
       step: 1,
-      key: 'person-amount',
       value: 8
     });
     const vdom$: xs<VNode> = view(state$);
@@ -85,7 +84,6 @@ describe('SliderInput Component', () => {
             min: 0,
             max: 100,
             step: 1,
-            key: 'person-amount',
             value: 8
           });
           const vdom$ = view(state$);

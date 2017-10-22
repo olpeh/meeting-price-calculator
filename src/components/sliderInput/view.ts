@@ -3,13 +3,12 @@ import { VNode, div, input, span, label } from '@cycle/dom';
 import { State } from './index';
 
 export default function view(state$: xs<State>): xs<VNode> {
-  return state$.map(({ description, unit, min, max, step, key, value }) =>
+  return state$.map(({ description, unit, min, max, step, value }) =>
     div('.SliderInput', [
       label('.SliderInput-label', description),
       input('.SliderInput-input', {
         attrs: {
           type: 'number',
-          'data-key': key,
           min,
           max,
           step
@@ -20,7 +19,6 @@ export default function view(state$: xs<State>): xs<VNode> {
       input('.SliderInput-input', {
         attrs: {
           type: 'range',
-          'data-key': key,
           min,
           max,
           step

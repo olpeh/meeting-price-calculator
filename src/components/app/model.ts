@@ -11,24 +11,8 @@ export default function model(): xs<Reducer> {
             startTime: moment(),
             duration: 0,
             currency: '€',
-            personAmount: {
-              description: 'Person amount',
-              unit: 'persons',
-              min: 1,
-              max: 100,
-              step: 1,
-              key: 'person-amount',
-              value: 4
-            },
-            avgPrice: {
-              description: 'Average price',
-              unit: `€ / h`,
-              min: 5,
-              max: 1500,
-              step: 5,
-              key: 'average-price',
-              value: 100
-            }
+            personAmount: 4,
+            avgPrice: 100
           }
   );
 

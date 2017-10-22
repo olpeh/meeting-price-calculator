@@ -24,8 +24,8 @@ export const lens = {
           duration: state.duration,
           currency: state.currency,
           totalPrice: calculatePrice(
-            state.personAmount.value,
-            state.avgPrice.value,
+            state.personAmount,
+            state.avgPrice,
             state.duration
           )
         }

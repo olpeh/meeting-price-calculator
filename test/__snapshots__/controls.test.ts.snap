@@ -33,25 +33,9 @@ Stream {
                 "_prod": FromArray {
                   "a": Array [
                     Object {
-                      "avgPrice": Object {
-                        "description": "Average price",
-                        "key": "average-price",
-                        "max": 1500,
-                        "min": 0,
-                        "step": 5,
-                        "unit": "€ / h",
-                        "value": 105,
-                      },
+                      "avgPrice": 105,
                       "currency": "€",
-                      "personAmount": Object {
-                        "description": "Person amount",
-                        "key": "person-amount",
-                        "max": 100,
-                        "min": 0,
-                        "step": 1,
-                        "unit": "persons",
-                        "value": 8,
-                      },
+                      "personAmount": 8,
                     },
                   ],
                   "type": "fromArray",

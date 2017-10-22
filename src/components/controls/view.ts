@@ -42,7 +42,7 @@ export default function view(
             label('.total-price-label', 'Total price per hour'),
             div(
               '.total-price-value',
-              formatPrice(personAmount.value * avgPrice.value, currency)
+              formatPrice(personAmount * avgPrice, currency)
             ),
             div('.currency', [
               span('.currency-label.label', 'Currency'),
