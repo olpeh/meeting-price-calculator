@@ -7,11 +7,7 @@ import { State as AppState } from '../app';
 import model from './model';
 import view from './view';
 import intent, { Actions } from './intent';
-import SliderInput, {
-  State as SliderInputState,
-  personAmountLens,
-  avgPriceLens
-} from '../sliderInput';
+import SliderInput, { personAmountLens, avgPriceLens } from '../sliderInput';
 
 export interface State {
   currency: string;
