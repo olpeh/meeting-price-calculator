@@ -15,75 +15,30 @@ Stream {
       "_ils": Array [],
       "_prod": FromArray {
         "a": Array [
-          Object {
-            "children": Array [
-              Object {
-                "children": Array [
-                  Object {
-                    "children": undefined,
-                    "data": Object {},
-                    "elm": undefined,
-                    "key": undefined,
-                    "sel": "span.Footer-label",
-                    "text": "Built with CycleJS",
-                  },
-                  Object {
-                    "children": undefined,
-                    "data": Object {},
-                    "elm": undefined,
-                    "key": undefined,
-                    "sel": "div.Footer-cycle-logo",
-                    "text": undefined,
-                  },
-                ],
-                "data": Object {
-                  "attrs": Object {
-                    "href": "https://cycle.js.org/",
-                    "target": "_blank",
-                  },
-                },
-                "elm": undefined,
-                "key": undefined,
-                "sel": "a.Footer-link",
-                "text": undefined,
-              },
-              Object {
-                "children": Array [
-                  Object {
-                    "children": undefined,
-                    "data": Object {},
-                    "elm": undefined,
-                    "key": undefined,
-                    "sel": "span.Footer-label",
-                    "text": "By olpeh",
-                  },
-                  Object {
-                    "children": undefined,
-                    "data": Object {},
-                    "elm": undefined,
-                    "key": undefined,
-                    "sel": "div.Footer-github-logo",
-                    "text": undefined,
-                  },
-                ],
-                "data": Object {
-                  "attrs": Object {
-                    "href": "https://github.com/olpeh/meeting-price-calculator",
-                    "target": "_blank",
-                  },
-                },
-                "elm": undefined,
-                "key": undefined,
-                "sel": "a.Footer-link",
-                "text": undefined,
-              },
-            ],
-            "data": Object {},
-            "elm": undefined,
-            "key": undefined,
-            "sel": "div.Footer",
-            "text": undefined,
-          },
+          <div.Footer>
+            <a.Footer-link
+              attrs={
+                Object {
+                  "href": "https://cycle.js.org/",
+                  "target": "_blank",
+                }
+              }
+            >
+              Built with CycleJS
+              <div.Footer-cycle-logo />
+            </a.Footer-link>
+            <a.Footer-link
+              attrs={
+                Object {
+                  "href": "https://github.com/olpeh/meeting-price-calculator",
+                  "target": "_blank",
+                }
+              }
+            >
+              By olpeh
+              <div.Footer-github-logo />
+            </a.Footer-link>
+          </div.Footer>,
         ],
         "type": "fromArray",
       },

@@ -50,23 +50,9 @@ Stream {
                 "_ils": Array [],
                 "_prod": FromArray {
                   "a": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": undefined,
-                          "data": Object {},
-                          "elm": undefined,
-                          "key": undefined,
-                          "sel": "p",
-                          "text": "personAmountSliderDOM",
-                        },
-                      ],
-                      "data": Object {},
-                      "elm": undefined,
-                      "key": undefined,
-                      "sel": "div.SliderInput",
-                      "text": undefined,
-                    },
+                    <div.SliderInput>
+                      personAmountSliderDOM
+                    </div.SliderInput>,
                   ],
                   "type": "fromArray",
                 },
@@ -80,23 +66,9 @@ Stream {
                 "_ils": Array [],
                 "_prod": FromArray {
                   "a": Array [
-                    Object {
-                      "children": Array [
-                        Object {
-                          "children": undefined,
-                          "data": Object {},
-                          "elm": undefined,
-                          "key": undefined,
-                          "sel": "p",
-                          "text": "avgPriceSliderDOM",
-                        },
-                      ],
-                      "data": Object {},
-                      "elm": undefined,
-                      "key": undefined,
-                      "sel": "div.SliderInput",
-                      "text": undefined,
-                    },
+                    <div.SliderInput>
+                      avgPriceSliderDOM
+                    </div.SliderInput>,
                   ],
                   "type": "fromArray",
                 },

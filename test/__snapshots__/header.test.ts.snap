@@ -15,23 +15,9 @@ Stream {
       "_ils": Array [],
       "_prod": FromArray {
         "a": Array [
-          Object {
-            "children": Array [
-              Object {
-                "children": undefined,
-                "data": "Header-title",
-                "elm": undefined,
-                "key": undefined,
-                "sel": "h1",
-                "text": "Meeting price calculator",
-              },
-            ],
-            "data": Object {},
-            "elm": undefined,
-            "key": undefined,
-            "sel": "div.Header",
-            "text": undefined,
-          },
+          <div.Header>
+            Meeting price calculator
+          </div.Header>,
         ],
         "type": "fromArray",
       },

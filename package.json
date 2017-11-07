@@ -48,40 +48,31 @@
     "cycle-storageify": "3.2.0",
     "gh-pages": "1.0.0",
     "moment": "2.18.1",
+    "pretty-format-snabbdom": "^1.0.0",
     "xstream": "10.9.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
     "test": "node scripts/test.js",
-    "test-no-watch": "node scripts/test.js --no-watch",
+    "no-watch-test": "node scripts/test.js --no-watch",
     "build": "node scripts/build.js",
-    "predeploy": "npm run test-no-watch && npm run build",
+    "predeploy": "npm run no-watch-test && npm run build",
     "deploy": "gh-pages -d build",
-    "format": "prettier --single-quote --write  'src/**/**/*.ts' 'src/**/*.ts' 'src/*.ts' 'src/css/*.scss'",
+    "format":
+      "prettier --single-quote --write  'src/**/**/*.ts' 'src/**/*.ts' 'src/*.ts' 'src/css/*.scss'",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{ts,js,scss}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
+    "*.{ts,js,scss}": ["prettier --single-quote --write", "git add"]
   },
   "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{ts, tsx, js,jsx}"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/(build|docs|node_modules|scripts)/"
-    ],
+    "collectCoverageFrom": ["src/**/*.{ts, tsx, js,jsx}"],
+    "testPathIgnorePatterns": ["<rootDir>/(build|docs|node_modules|scripts)/"],
     "transform": {
       "^.+\\.tsx?$": "./node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js", "json"],
+    "snapshotSerializers": ["pretty-format-snabbdom"]
   }
 }
