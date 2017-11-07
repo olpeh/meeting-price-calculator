@@ -7,7 +7,6 @@
 ![Meeting Price Calculator GIF](meeting-price-calculator.gif)
 
 ## Development
-- Install dependencies: `npm install`
+- Install dependencies: `yarn` or `npm install`
 - Run tests: `npm test`
 - Run dev build: `npm start`
-- Deploy `npm run deploy`
