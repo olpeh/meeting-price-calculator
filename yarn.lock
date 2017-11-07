@@ -5483,7 +5483,7 @@ pretty-error@^2.0.2:
     renderkid "^2.0.1"
     utila "~0.4"
 
-pretty-format-snabbdom@^1.0.0:
+pretty-format-snabbdom@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/pretty-format-snabbdom/-/pretty-format-snabbdom-1.0.0.tgz#b1940125fca745500385809b7b600688a34cbaa3"
   dependencies:
