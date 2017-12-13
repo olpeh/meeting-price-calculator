@@ -9,9 +9,7 @@ branches:
   only:
   - master
 notifications:
-  email: false
-before_script:
-- npm prune
+  email: true
 script:
 - npm test
 - npm run build
