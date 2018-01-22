@@ -9,11 +9,16 @@ export default function calculatePrice(
 }
 
 export function formatPrice(price: number, currency: string): string {
-  const separator = currency === '€' ? ' ' : ',';
-  const displayPrice: string = toDisplayPrice(price, separator);
-  return currency === '€'
-    ? `${displayPrice.replace('.', ',')} ${currency}`
-    : `${currency} ${displayPrice}`;
+  // Do not try to format an undefined price
+  if (price) {
+    const separator = currency === '€' ? ' ' : ',';
+    const displayPrice: string = toDisplayPrice(price, separator);
+    return currency === '€'
+      ? `${displayPrice.replace('.', ',')} ${currency}`
+      : `${currency} ${displayPrice}`;
+  } else {
+    return '';
+  }
 }
 
 export function toDisplayPrice(price: number, separator: string): string {

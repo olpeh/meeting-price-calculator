@@ -81,6 +81,20 @@ describe('Price utils', () => {
       const actual = formatPrice(price, currency);
       expect(actual).toBe(expected);
     });
+
+    it('should not display NaN,undefined € with undefined input', () => {
+      const price = undefined;
+      const currency = undefined;
+      const actual = formatPrice(price, currency);
+      expect(actual.length).toBe(0);
+    });
+
+    it('should not display NaN,undefined € with null as input', () => {
+      const price = null;
+      const currency = null;
+      const actual = formatPrice(price, currency);
+      expect(actual.length).toBe(0);
+    });
   });
 
   describe('toDisplayPrice', () => {
