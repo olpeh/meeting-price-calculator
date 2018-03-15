@@ -17,7 +17,7 @@ export function formatPrice(price: number, currency: string): string {
       ? `${displayPrice.replace('.', ',')} ${currency}`
       : `${currency} ${displayPrice}`;
   } else {
-    return '';
+    return currency === '€' ? '0,00 €' : '$ 0.00';
   }
 }
 
