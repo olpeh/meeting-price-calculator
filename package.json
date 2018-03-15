@@ -35,8 +35,8 @@
     "ts-jest": "22.4.1",
     "tslint": "5.9.1",
     "typescript": "2.7.2",
-    "webpack": "4.1.1",
-    "webpack-dev-server": "3.1.1"
+    "webpack": "3.5.6",
+    "webpack-dev-server": "2.7.1"
   },
   "dependencies": {
     "@cycle/dom": "20.2.0",
@@ -58,21 +58,40 @@
     "build": "node scripts/build.js",
     "predeploy": "npm run no-watch-test && npm run build",
     "deploy": "gh-pages -d build",
-    "format":
-      "prettier --single-quote --write  'src/**/**/*.ts' 'src/**/*.ts' 'src/*.ts' 'src/css/*.scss'",
+    "format": "prettier --single-quote --write  'src/**/**/*.ts' 'src/**/*.ts' 'src/*.ts' 'src/css/*.scss'",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{ts,js,scss}": ["prettier --single-quote --write", "git add"]
+    "*.{ts,js,scss}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "jest": {
-    "collectCoverageFrom": ["src/**/*.{ts, tsx, js,jsx}"],
-    "testPathIgnorePatterns": ["<rootDir>/(build|docs|node_modules|scripts)/"],
+    "collectCoverageFrom": [
+      "src/**/*.{ts, tsx, js,jsx}"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/(build|docs|node_modules|scripts)/"
+    ],
     "transform": {
       "^.+\\.tsx?$": "./node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js", "json"],
-    "snapshotSerializers": ["pretty-format-snabbdom"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "snapshotSerializers": [
+      "pretty-format-snabbdom"
+    ]
+  },
+  "greenkeeper": {
+    "ignore": [
+      "webpack",
+      "webpack-dev-server"
+    ]
   }
 }
