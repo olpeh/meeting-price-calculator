@@ -86,14 +86,16 @@ describe('Price utils', () => {
       const price = undefined;
       const currency = undefined;
       const actual = formatPrice(price, currency);
-      expect(actual.length).toBe(0);
+      expect(actual).not.toContain('NaN');
+      expect(actual).not.toContain('undefined');
     });
 
     it('should not display NaN,undefined € with null as input', () => {
       const price = null;
       const currency = null;
       const actual = formatPrice(price, currency);
-      expect(actual.length).toBe(0);
+      expect(actual).not.toContain('NaN');
+      expect(actual).not.toContain('undefined');
     });
   });
 
