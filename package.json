@@ -5,14 +5,7 @@
   "homepage": "https://olpeh.github.io/meeting-price-calculator",
   "devDependencies": {
     "@types/jest": "22.2.0",
-    "@webpack-blocks/babel6": "0.4.1",
-    "@webpack-blocks/dev-server2": "0.4.0",
-    "@webpack-blocks/extract-text2": "0.4.0",
-    "@webpack-blocks/postcss": "0.4.3",
-    "@webpack-blocks/sass": "0.4.1",
-    "@webpack-blocks/tslint": "0.4.0",
-    "@webpack-blocks/typescript": "0.4.1",
-    "@webpack-blocks/webpack2": "0.4.0",
+    "@webpack-blocks/tslint": "1.0.0-rc",
     "autoprefixer": "8.1.0",
     "babel-plugin-transform-custom-element-classes": "0.1.0",
     "babel-plugin-transform-react-jsx": "6.24.1",
@@ -21,6 +14,7 @@
     "babili-webpack-plugin": "0.1.2",
     "copy-webpack-plugin": "4.5.1",
     "cyclejs-test-helpers": "1.5.1",
+    "gh-pages": "1.1.0",
     "html-looks-like": "1.0.3",
     "html-webpack-plugin": "3.0.6",
     "husky": "0.14.3",
@@ -36,6 +30,7 @@
     "tslint": "5.9.1",
     "typescript": "2.7.2",
     "webpack": "3.5.6",
+    "webpack-blocks": "1.0.0-rc.2",
     "webpack-dev-server": "2.7.1"
   },
   "dependencies": {
@@ -47,8 +42,8 @@
     "@cycle/time": "0.13.0",
     "cycle-onionify": "5.0.0",
     "cycle-storageify": "4.0.1",
-    "gh-pages": "1.1.0",
     "moment": "2.21.0",
+    "typestyle": "1.7.2",
     "xstream": "11.2.0"
   },
   "scripts": {

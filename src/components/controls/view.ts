@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import { VNode, div, select, option, span, label } from '@cycle/dom';
 
 import { State } from './index';
+import { styles } from './styles';
 import { formatPrice } from '../../utils/priceUtils';
 
 function renderOption(currency: string, selectedCurrency: string) {
@@ -19,7 +20,7 @@ function renderOption(currency: string, selectedCurrency: string) {
 }
 
 function renderCurrencySelect(selectedCurrency: string) {
-  return select('.currency-select', [
+  return select(`.${styles.currencySelect}`, [
     renderOption('€', selectedCurrency),
     renderOption('$', selectedCurrency)
   ]);
@@ -33,19 +34,21 @@ export default function view(
   return xs
     .combine(state$, personAmountSliderVDom$, avgPriceSliderVDom$)
     .map(
-      (
-        [{ currency, personAmount, avgPrice }, personAmountVDom, avgPriceVDom]
-      ) =>
-        div('.Controls', [
+      ([
+        { currency, personAmount, avgPrice },
+        personAmountVDom,
+        avgPriceVDom
+      ]) =>
+        div(`.${styles.controls}`, [
           personAmountVDom,
-          div('.price-result', [
-            label('.total-price-label', 'Total price per hour'),
+          div(`.${styles.priceResult}`, [
+            label('Total price per hour'),
             div(
-              '.total-price-value',
+              `.${styles.totalPriceValue}`,
               formatPrice(personAmount * avgPrice, currency)
             ),
-            div('.currency', [
-              span('.currency-label.label', 'Currency'),
+            div(`.${styles.currency}`, [
+              span('Currency'),
               renderCurrencySelect(currency)
             ])
           ]),

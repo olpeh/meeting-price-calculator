@@ -1,28 +1,32 @@
 import xs from 'xstream';
-import { VNode, div, a, span } from '@cycle/dom';
+import { VNode, div, a, span, label, img } from '@cycle/dom';
+import { styles } from './styles';
 
 export default function Footer(): xs<VNode> {
   return xs.of(
-    div('.Footer', [
+    div(`.${styles.footer}`, [
       a(
-        '.Footer-link',
+        `.${styles.link}`,
         {
           attrs: {
             href: 'https://cycle.js.org/',
             target: '_blank'
           }
         },
-        [span('.Footer-label', 'Built with CycleJS'), div('.Footer-cycle-logo')]
+        [
+          span(`.${label}`, 'Built with CycleJS'),
+          div(`.${styles.logo}.cycle-logo`)
+        ]
       ),
       a(
-        '.Footer-link',
+        `.${styles.link}`,
         {
           attrs: {
             href: 'https://github.com/olpeh/meeting-price-calculator',
             target: '_blank'
           }
         },
-        [span('.Footer-label', 'By olpeh'), div('.Footer-github-logo')]
+        [span(`.${label}`, 'By olpeh'), div(`.${styles.logo}.github-logo`)]
       )
     ])
   );

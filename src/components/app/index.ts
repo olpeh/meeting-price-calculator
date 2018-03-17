@@ -4,6 +4,7 @@ import isolate from '@cycle/isolate';
 import * as moment from 'moment';
 
 import { Sources, Sinks } from '../../interfaces';
+import { styles } from './styles';
 import model from './model';
 import Header from '../header';
 import Ticker, { lens as tickerLens } from '../ticker';
@@ -39,9 +40,9 @@ export default function App(sources: Sources): Sinks {
       footerVDom$
     )
     .map(([header, ticker, controls, duration, footer]) =>
-      div('.App-flex-container', [
+      div(`.${styles.flexContainer}`, [
         header,
-        div('.wrapper-div', [ticker, controls, duration]),
+        div(`.${styles.wrapper}`, [ticker, controls, duration]),
         footer
       ])
     );
