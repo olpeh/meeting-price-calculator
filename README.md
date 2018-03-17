@@ -56,3 +56,7 @@ The project is using the following tools and technologies:
 ## License
 
 [MIT](LICENSE)
+
+## Acknowledgements
+
+This project is sponsored by [Futurice's](https://futurice.com/) [Open Source Sponsorship program](http://spiceprogram.org/oss-sponsorship)
