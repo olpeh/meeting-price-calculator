@@ -17,12 +17,12 @@ export default function model(actions: SliderInputActions): xs<Reducer> {
           }
   );
 
-  const valueChangeReducer$: xs<
-    Reducer
-  > = actions.ValueChangeAction$.map(value => (prevState: State): State => ({
-    ...prevState,
-    value
-  }));
+  const valueChangeReducer$: xs<Reducer> = actions.ValueChangeAction$.map(
+    value => (prevState: State): State => ({
+      ...prevState,
+      value
+    })
+  );
 
   return xs.merge(defaultReducer$, valueChangeReducer$);
 }
