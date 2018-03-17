@@ -9,7 +9,7 @@ import Header from '../src/components/header';
 describe('Header Component', () => {
   it('should render correctly', () => {
     const expectedHTML = `
-      <div class="Header">
+      <div>
         <h1>Meeting price calculator</h1>
       </div>
     `;

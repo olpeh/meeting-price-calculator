@@ -15,8 +15,8 @@ Stream {
       "_ils": Array [],
       "_prod": FromArray {
         "a": Array [
-          <div.Footer>
-            <a.Footer-link
+          <div.footer_f19tl4e9>
+            <a.link_frxg3q8
               attrs={
                 Object {
                   "href": "https://cycle.js.org/",
@@ -25,9 +25,9 @@ Stream {
               }
             >
               Built with CycleJS
-              <div.Footer-cycle-logo />
-            </a.Footer-link>
-            <a.Footer-link
+              <div.logo_f12e12nn.cycle-logo />
+            </a.link_frxg3q8>
+            <a.link_frxg3q8
               attrs={
                 Object {
                   "href": "https://github.com/olpeh/meeting-price-calculator",
@@ -36,9 +36,9 @@ Stream {
               }
             >
               By olpeh
-              <div.Footer-github-logo />
-            </a.Footer-link>
-          </div.Footer>,
+              <div.logo_f12e12nn.github-logo />
+            </a.link_frxg3q8>
+          </div.footer_f19tl4e9>,
         ],
         "type": "fromArray",
       },

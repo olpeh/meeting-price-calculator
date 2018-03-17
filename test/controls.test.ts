@@ -60,16 +60,16 @@ describe('Controls Component', () => {
     ) => {
       const totalPricePerHour = formatPrice(personAmount * avgPrice, currency);
       return `
-        <div class="Controls">
+        <div>
           <div class="SliderInput">
             <p>personAmountSliderDOM</p>
           </div>
-          <div class="price-result">
-            <label class="total-price-label">Total price per hour</label>
-            <div class="total-price-value">${totalPricePerHour}</div>
-            <div class="currency">
-              <span class="currency-label label">Currency</span>
-              <select class="currency-select">
+          <div>
+            <label>Total price per hour</label>
+            <div>${totalPricePerHour}</div>
+            <div>
+              <span>Currency</span>
+              <select>
                 <option>€</option>
                 <option>$</option>
               </select>

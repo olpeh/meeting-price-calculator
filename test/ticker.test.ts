@@ -46,10 +46,9 @@ describe('Ticker Component', () => {
     const expectedHTML = (currency: string, totalPrice: number) => {
       const priceSoFar = formatPrice(totalPrice, currency);
       return `
-        <div class="Ticker">
-          <div class="Price-actual">
-          <div class="Price-label">This meeting has cost</div>
-          <div class="Price-value">${priceSoFar}</div>
+        <div>
+          <div>This meeting has cost</div>
+          <div>${priceSoFar}</div>
         </div>
       `;
     };

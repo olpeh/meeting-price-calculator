@@ -50,20 +50,20 @@ describe('SliderInput Component', () => {
       step: number,
       value: number
     ) => `
-        <div class="SliderInput">
-          <label class="SliderInput-label">
+        <div>
+          <label>
             Person amount
           </label>
-          <input class="SliderInput-input"
+          <input
                  type="number"
                  min="${min}"
                  max="${max}"
                  step="${step}"
                  value="${value}">
-          <span class="SliderInput-unit">
+          <span>
             persons
           </span>
-          <input class="SliderInput-input"
+          <input
                  type="range"
                  min="${min}"
                  max="${max}"

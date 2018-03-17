@@ -40,12 +40,12 @@ describe('Duration Component', () => {
 
   it('should render correctly', () => {
     const expectedHTML = (startTime: moment.Moment, duration: number) => `
-        <div class="Duration">
-          <div class="start-time">
+        <div>
+          <div>
             <span>Start time: ${startTime.format('HH:mm:ss')}</span>
-            <button class="reset-button">Reset</button>
+            <button>Reset</button>
           </div>
-          <div class="duration">Duration: ${moment
+          <div>Duration: ${moment
             .duration(duration, 'seconds')
             .humanize()}</div>
         </div>

@@ -15,9 +15,9 @@ Stream {
       "_ils": Array [],
       "_prod": FromArray {
         "a": Array [
-          <div.Header>
+          <div.fjvbrko>
             Meeting price calculator
-          </div.Header>,
+          </div.fjvbrko>,
         ],
         "type": "fromArray",
       },

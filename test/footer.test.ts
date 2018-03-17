@@ -9,18 +9,18 @@ import Footer from '../src/components/footer';
 describe('Footer Component', () => {
   it('should render correctly', () => {
     const expectedHTML = `
-      <div class="Footer">
-        <a class="Footer-link"
+      <div>
+        <a
             href="https://cycle.js.org/"
             target="_blank">
-            <span class="Footer-label">Built with CycleJS</span>
-            <div class="Footer-cycle-logo"></div>
+            <span>Built with CycleJS</span>
+            <div></div>
         </a>
-        <a class="Footer-link"
+        <a
             href="https://github.com/olpeh/meeting-price-calculator"
             target="_blank">
-          <span class="Footer-label">By olpeh</span>
-          <div class="Footer-github-logo"></div>
+          <span>By olpeh</span>
+          <div></div>
         </a>
       </div>
     `;
