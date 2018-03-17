@@ -33,6 +33,7 @@ export const styles = stylesheet({
   logo: {
     height: '20px',
     width: '20px',
-    marginLeft: '5px'
+    marginLeft: '5px',
+    backgroundSize: 'cover'
   }
 });

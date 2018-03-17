@@ -1,5 +1,5 @@
 import xs from 'xstream';
-import { VNode, div } from '@cycle/dom';
+import { VNode, div, main } from '@cycle/dom';
 import isolate from '@cycle/isolate';
 import * as moment from 'moment';
 
@@ -42,7 +42,7 @@ export default function App(sources: Sources): Sinks {
     .map(([header, ticker, controls, duration, footer]) =>
       div(`.${styles.flexContainer}`, [
         header,
-        div(`.${styles.wrapper}`, [ticker, controls, duration]),
+        main(`.${styles.wrapper}`, [ticker, controls, duration]),
         footer
       ])
     );

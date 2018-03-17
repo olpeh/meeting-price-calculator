@@ -9,20 +9,20 @@ import Footer from '../src/components/footer';
 describe('Footer Component', () => {
   it('should render correctly', () => {
     const expectedHTML = `
-      <div>
+      <footer>
         <a
             href="https://cycle.js.org/"
             target="_blank">
             <span>Built with CycleJS</span>
-            <div></div>
+            <img />
         </a>
         <a
             href="https://github.com/olpeh/meeting-price-calculator"
             target="_blank">
           <span>By olpeh</span>
-          <div></div>
+          <img />
         </a>
-      </div>
+      </footer>
     `;
 
     const vdom$ = Footer();

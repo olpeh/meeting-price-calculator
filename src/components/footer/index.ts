@@ -1,10 +1,12 @@
 import xs from 'xstream';
-import { VNode, div, a, span, label, img } from '@cycle/dom';
+import { VNode, div, a, span, label, img, footer } from '@cycle/dom';
 import { styles } from './styles';
+import * as cycleLogo from '../../img/cycle-logo.png';
+import * as githubLogo from '../../img/github-logo.png';
 
 export default function Footer(): xs<VNode> {
   return xs.of(
-    div(`.${styles.footer}`, [
+    footer(`.${styles.footer}`, [
       a(
         `.${styles.link}`,
         {
@@ -15,7 +17,9 @@ export default function Footer(): xs<VNode> {
         },
         [
           span(`.${label}`, 'Built with CycleJS'),
-          div(`.${styles.logo}.cycle-logo`)
+          img(`.${styles.logo}`, {
+            attrs: { src: cycleLogo }
+          })
         ]
       ),
       a(
@@ -26,7 +30,12 @@ export default function Footer(): xs<VNode> {
             target: '_blank'
           }
         },
-        [span(`.${label}`, 'By olpeh'), div(`.${styles.logo}.github-logo`)]
+        [
+          span(`.${label}`, 'By olpeh'),
+          img(`.${styles.logo}`, {
+            attrs: { src: githubLogo }
+          })
+        ]
       )
     ])
   );

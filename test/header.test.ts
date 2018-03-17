@@ -9,9 +9,9 @@ import Header from '../src/components/header';
 describe('Header Component', () => {
   it('should render correctly', () => {
     const expectedHTML = `
-      <div>
+      <header>
         <h1>Meeting price calculator</h1>
-      </div>
+      </header>
     `;
 
     const vdom$ = Header();

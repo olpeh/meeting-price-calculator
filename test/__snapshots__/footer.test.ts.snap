@@ -15,7 +15,7 @@ Stream {
       "_ils": Array [],
       "_prod": FromArray {
         "a": Array [
-          <div.footer_f19tl4e9>
+          <footer.footer_f19tl4e9>
             <a.link_frxg3q8
               attrs={
                 Object {
@@ -25,7 +25,15 @@ Stream {
               }
             >
               Built with CycleJS
-              <div.logo_f12e12nn.cycle-logo />
+              <img.logo_f7jvbo9
+                attrs={
+                  Object {
+                    "src": Object {
+                      "process": [Function],
+                    },
+                  }
+                }
+              />
             </a.link_frxg3q8>
             <a.link_frxg3q8
               attrs={
@@ -36,9 +44,17 @@ Stream {
               }
             >
               By olpeh
-              <div.logo_f12e12nn.github-logo />
+              <img.logo_f7jvbo9
+                attrs={
+                  Object {
+                    "src": Object {
+                      "process": [Function],
+                    },
+                  }
+                }
+              />
             </a.link_frxg3q8>
-          </div.footer_f19tl4e9>,
+          </footer.footer_f19tl4e9>,
         ],
         "type": "fromArray",
       },
