@@ -8,7 +8,51 @@
 
 ![Meeting Price Calculator GIF](meeting-price-calculator.gif)
 
+## What?
+
+A timer for estimating how much a meeting has cost.
+Simply calculating the amount of people times the average hourly rate times duration.
+
+## Why?
+
+Because sometimes meetings are held just because having meetings is what we do.
+But really, this was built mainly for fun and for learning [Cycle.js](https://cycle.js.org/).
+Haven't really used this during any real meetings yet.
+
+## How is it built?
+
+The project is using the following tools and technologies:
+
+* [Create Cycle App](https://github.com/cyclejs-community/create-cycle-app) as the base boilerplate
+* [Cycle.js](https://cycle.js.org/) as the core, in addition to the following:
+  * @cycle/dom
+  * @cycle/http
+  * @cycle/isolate
+  * @cycle/run
+  * @cycle/storage
+  * @cycle/time
+  * cycle-onionify
+  * cycle-storageify
+* [xstream](http://staltz.github.io/xstream/) as a stream library
+* [TypeScript](http://www.typescriptlang.org/)
+* [Prettier](http://prettier.io/) for automatic code formatting
+* [TypeStyle](https://typestyle.github.io/) for CSS-in-JS
+* [Jest](https://github.com/facebook/jest) for testing
+* [HTML Looks Like](https://github.com/staltz/html-looks-like) for testing that the views look about right
+* [jsverify](https://github.com/jsverify/jsverify) for property based testing
+* [Moment](http://momentjs.com/) for date and duration formatting
+
 ## Development
-- Install dependencies: `yarn` or `npm install`
-- Run tests: `npm test`
-- Run dev build: `npm start`
+
+* Install dependencies: `yarn` or `npm install`
+* Run tests: `npm test`
+* Run dev build: `npm start`
+
+## Contributing
+
+* Found a bug or have an idea? [Please add an issue](https://github.com/olpeh/meeting-price-calculator/issues)
+* PRs are [welcome](https://github.com/olpeh/meeting-price-calculator/pulls)
+
+## License
+
+[MIT](LICENSE)
