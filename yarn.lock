@@ -2190,9 +2190,9 @@ cycle-storageify@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/cycle-storageify/-/cycle-storageify-4.0.1.tgz#bdf16bb53a251c0527ddc3aad8de921a29348efc"
 
-cyclejs-test-helpers@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/cyclejs-test-helpers/-/cyclejs-test-helpers-1.5.1.tgz#f6502658320cd3a78db0aa197303fe85290745c7"
+cyclejs-test-helpers@1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/cyclejs-test-helpers/-/cyclejs-test-helpers-1.5.2.tgz#61fd979dcad7f7a88f4052f6dabd7cb24b7de333"
   dependencies:
     "@cycle/time" "*"
     jsverify ">=0.8.1"
