@@ -16,14 +16,14 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@cycle/dom@20.2.0":
-  version "20.2.0"
-  resolved "https://registry.yarnpkg.com/@cycle/dom/-/dom-20.2.0.tgz#49b064174f9040d3c4e7d1a9863b7cd1f4641396"
+"@cycle/dom@20.3.0":
+  version "20.3.0"
+  resolved "https://registry.yarnpkg.com/@cycle/dom/-/dom-20.3.0.tgz#b83c66429bfbba3d781556f0050132c7dbf200bf"
   dependencies:
     "@cycle/run" "4.0.0"
     es6-map "^0.1.4"
     snabbdom "0.7.0"
-    snabbdom-selector "2.0.1"
+    snabbdom-selector "^3.0.0"
     xstream "11.x"
 
 "@cycle/http@14.9.0":
@@ -2111,12 +2111,6 @@ css-selector-tokenizer@^0.7.0:
 css-what@2.1:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-2.1.0.tgz#9467d032c38cfaefb9f2d79501253062f87fa1bd"
-
-cssauron2@^2.0.1:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/cssauron2/-/cssauron2-2.0.3.tgz#e41691ab17dfbed6b76593ff805aeeb497baaf71"
-  dependencies:
-    through X.X.X
 
 cssesc@^0.1.0:
   version "0.1.0"
@@ -6857,11 +6851,11 @@ snabbdom-pragma@2.6.0:
   dependencies:
     extend "^3.0.0"
 
-snabbdom-selector@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/snabbdom-selector/-/snabbdom-selector-2.0.1.tgz#50704b4802662198e427f0200dd461eb201d52c5"
+snabbdom-selector@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/snabbdom-selector/-/snabbdom-selector-3.0.0.tgz#787011a5e89e8b1fa2fb768d4bb52a84396714ec"
   dependencies:
-    cssauron2 "^2.0.1"
+    tree-selector "^1.1.0"
 
 snabbdom-to-html@5.1.0:
   version "5.1.0"
@@ -7347,10 +7341,6 @@ through2@^2.0.0:
     readable-stream "^2.1.5"
     xtend "~4.0.1"
 
-through@X.X.X:
-  version "2.3.8"
-  resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
-
 thunky@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-0.1.0.tgz#bf30146824e2b6e67b0f2d7a4ac8beb26908684e"
@@ -7421,6 +7411,10 @@ tr46@~0.0.3:
 trampa@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/trampa/-/trampa-1.0.0.tgz#5247347ac334807fa6c0000444cb91b639840ad5"
+
+tree-selector@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tree-selector/-/tree-selector-1.1.0.tgz#e47bbb7174b3040328d04da6c80fcabf8819b129"
 
 trim-newlines@^1.0.0:
   version "1.0.0"
