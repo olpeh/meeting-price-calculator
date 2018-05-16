@@ -6863,9 +6863,9 @@ snabbdom-selector@2.0.1:
   dependencies:
     cssauron2 "^2.0.1"
 
-snabbdom-to-html@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/snabbdom-to-html/-/snabbdom-to-html-5.1.0.tgz#63f58fca3c755803f4f0bd7b25d42775f750cef2"
+snabbdom-to-html@5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/snabbdom-to-html/-/snabbdom-to-html-5.1.1.tgz#c89ae3dc9bbe2e28ed6b7d78f96c46be731817b2"
   dependencies:
     lodash.escape "^4.0.1"
     lodash.forown "^4.4.0"
