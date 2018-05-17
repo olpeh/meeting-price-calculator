@@ -2176,6 +2176,10 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   dependencies:
     cssom "0.3.x"
 
+csstype@^2.4.0:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.2.tgz#4534308476ceede8fbe148b9b99f9baf1c80fa06"
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
@@ -7537,10 +7541,11 @@ typescript@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.1.tgz#6160e4f8f195d5ba81d4876f9c0cc1fbc0820624"
 
-typestyle@1.7.2:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-1.7.2.tgz#22ca9dfeaf334f755030cc6d7799b468bb1ee132"
+typestyle@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/typestyle/-/typestyle-2.0.0.tgz#b81e064d9c001028f0c2972acbaa08a1e1dc82a2"
   dependencies:
+    csstype "^2.4.0"
     free-style "2.5.1"
 
 typify-parser@^1.1.0:
