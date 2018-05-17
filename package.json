@@ -43,7 +43,7 @@
     "cycle-onionify": "5.0.0",
     "cycle-storageify": "4.0.1",
     "moment": "2.22.0",
-    "typestyle": "1.7.2",
+    "typestyle": "2.0.0",
     "xstream": "11.2.0"
   },
   "scripts": {
