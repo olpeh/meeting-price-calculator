@@ -2186,9 +2186,9 @@ custom-error-instance@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/custom-error-instance/-/custom-error-instance-2.1.1.tgz#3cf6391487a6629a6247eb0ca0ce00081b7e361a"
 
-cycle-onionify@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/cycle-onionify/-/cycle-onionify-5.0.0.tgz#1b69156fa76690ed2ea93325ce9c52f9b0fa5ff9"
+cycle-onionify@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/cycle-onionify/-/cycle-onionify-5.1.0.tgz#3ff8bb53d50bcd66060beecfdba700df262d275c"
   dependencies:
     "@cycle/isolate" ">=3"
     "@cycle/run" "*"
