@@ -36,7 +36,7 @@
   "dependencies": {
     "@cycle/dom": "20.2.0",
     "@cycle/http": "14.9.0",
-    "@cycle/isolate": "3.2.0",
+    "@cycle/isolate": "3.3.0",
     "@cycle/run": "4.1.0",
     "@cycle/storage": "5.0.3",
     "@cycle/time": "0.13.0",
