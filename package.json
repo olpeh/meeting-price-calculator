@@ -6,7 +6,7 @@
   "devDependencies": {
     "@types/jest": "22.2.0",
     "@webpack-blocks/tslint": "1.0.0",
-    "autoprefixer": "8.2.0",
+    "autoprefixer": "8.3.0",
     "babel-plugin-transform-custom-element-classes": "0.1.0",
     "babel-plugin-transform-react-jsx": "6.24.1",
     "babel-polyfill": "6.26.0",
