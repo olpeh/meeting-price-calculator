@@ -28,10 +28,7 @@ describe('Footer Component', () => {
     const vdom$ = Footer();
     const html$ = vdom$.map(toHtml);
     const expected$ = xs.of(expectedHTML);
-    const looksLike = withTime(Time =>
-      Time.assertEqual(html$, expected$, htmlLooksLike)
-    );
-    return looksLike();
+    return withTime(Time => Time.assertEqual(html$, expected$, htmlLooksLike));
   });
 
   it('should match a snapshot correctly', () => {
