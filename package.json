@@ -4,9 +4,9 @@
   "private": true,
   "homepage": "https://olpeh.github.io/meeting-price-calculator",
   "devDependencies": {
-    "@types/jest": "22.2.0",
+    "@types/jest": "23.0.0",
     "@webpack-blocks/tslint": "1.0.0",
-    "autoprefixer": "8.2.0",
+    "autoprefixer": "8.6.0",
     "babel-plugin-transform-custom-element-classes": "0.1.0",
     "babel-plugin-transform-react-jsx": "6.24.1",
     "babel-polyfill": "6.26.0",
@@ -14,19 +14,19 @@
     "babili-webpack-plugin": "0.1.2",
     "copy-webpack-plugin": "4.5.1",
     "cyclejs-test-helpers": "2.0.0",
-    "gh-pages": "1.1.0",
+    "gh-pages": "1.2.0",
     "html-looks-like": "1.0.3",
     "html-webpack-plugin": "3.2.0",
     "husky": "0.14.3",
     "jest": "22.4.2",
     "jsverify": "0.8.3",
-    "lint-staged": "7.0.1",
-    "prettier": "1.11.1",
+    "lint-staged": "7.1.3",
+    "prettier": "1.13.4",
     "pretty-format-snabbdom": "1.0.0",
     "progress-bar-webpack-plugin": "1.11.0",
-    "snabbdom-pragma": "2.6.0",
-    "snabbdom-to-html": "5.1.0",
-    "ts-jest": "22.4.2",
+    "snabbdom-pragma": "2.7.0",
+    "ts-jest": "22.4.6",
+    "snabbdom-to-html": "5.1.1",
     "tslint": "5.9.1",
     "typescript": "2.7.2",
     "webpack": "3.5.6",
@@ -34,16 +34,16 @@
     "webpack-dev-server": "2.7.1"
   },
   "dependencies": {
-    "@cycle/dom": "20.2.0",
+    "@cycle/dom": "20.4.0",
     "@cycle/http": "14.9.0",
-    "@cycle/isolate": "3.2.0",
+    "@cycle/isolate": "3.3.0",
     "@cycle/run": "4.1.0",
     "@cycle/storage": "5.0.3",
     "@cycle/time": "0.13.0",
-    "cycle-onionify": "5.0.0",
+    "cycle-onionify": "5.1.0",
     "cycle-storageify": "4.0.1",
-    "moment": "2.22.0",
-    "typestyle": "1.7.2",
+    "moment": "2.22.2",
+    "typestyle": "2.0.0",
     "xstream": "11.2.0"
   },
   "scripts": {
@@ -53,29 +53,44 @@
     "build": "node scripts/build.js",
     "predeploy": "npm run no-watch-test && npm run build",
     "deploy": "gh-pages -d build",
-    "format":
-      "prettier --single-quote --write  'src/**/**/*.ts' 'src/**/*.ts' 'src/*.ts' 'src/css/*.scss'",
+    "format": "prettier --single-quote --write  'src/**/**/*.ts' 'src/**/*.ts' 'src/*.ts' 'src/css/*.scss'",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{ts,js,scss}": ["prettier --single-quote --write", "git add"]
+    "*.{ts,js,scss}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/scripts/assetsTransformer.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/scripts/assetsTransformer.js",
       "\\.(css|less)$": "<rootDir>/scripts/assetsTransformer.js"
     },
-    "collectCoverageFrom": ["src/**/*.{!d.ts, ts, tsx, js,jsx}"],
-    "testPathIgnorePatterns": ["<rootDir>/(build|docs|node_modules|scripts)/"],
+    "collectCoverageFrom": [
+      "src/**/*.{!d.ts, ts, tsx, js,jsx}"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/(build|docs|node_modules|scripts)/"
+    ],
     "transform": {
       "^.+\\.tsx?$": "./node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": ["ts", "tsx", "js", "json"],
-    "snapshotSerializers": ["pretty-format-snabbdom"]
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "snapshotSerializers": [
+      "pretty-format-snabbdom"
+    ]
   },
   "greenkeeper": {
-    "ignore": ["webpack", "webpack-dev-server"]
+    "ignore": [
+      "webpack",
+      "webpack-dev-server"
+    ]
   }
 }

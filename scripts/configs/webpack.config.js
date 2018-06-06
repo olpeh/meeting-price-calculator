@@ -49,13 +49,7 @@ module.exports = createConfig([
       Snabbdom: 'snabbdom-pragma'
     })
   ]),
-  env('development', [
-    devServer(),
-    devServer.proxy({
-      '/api': { target: 'http://localhost:3000' }
-    }),
-    sourceMaps()
-  ]),
+  env('development', [devServer(), sourceMaps()]),
   env('production', [
     addPlugins([
       new BabiliPlugin(),
