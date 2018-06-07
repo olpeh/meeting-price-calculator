@@ -40,7 +40,7 @@
     "@cycle/run": "4.1.0",
     "@cycle/storage": "5.0.3",
     "@cycle/time": "0.13.0",
-    "cycle-onionify": "5.1.0",
+    "cycle-onionify": "5.2.0",
     "cycle-storageify": "4.0.1",
     "moment": "2.22.2",
     "typestyle": "2.0.0",
