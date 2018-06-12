@@ -50,15 +50,19 @@
     "start": "node scripts/start.js",
     "test": "node scripts/test.js",
     "no-watch-test": "node scripts/test.js --no-watch",
+    "lint": "tslint --project tslint.json 'src/**/*.{ts,tsx}'",
     "build": "node scripts/build.js",
     "predeploy": "npm run no-watch-test && npm run build",
     "deploy": "gh-pages -d build",
-    "format":
-      "prettier --single-quote --write  'src/**/**/*.ts' 'src/**/*.ts' 'src/*.ts' 'src/css/*.scss'",
-    "precommit": "lint-staged"
+    "format": "prettier --write  'src/**/**/*.ts' 'src/**/*.ts' 'src/*.ts' 'src/css/*.scss'",
+    "precommit": "lint-staged",
+    "prepush": "npm run lint && npm run no-watch-test"
   },
   "lint-staged": {
-    "*.{ts,js,scss}": ["prettier --single-quote --write", "git add"]
+    "*.{ts, tsx, js, scss, css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "jest": {
     "moduleNameMapper": {
