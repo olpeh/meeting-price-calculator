@@ -1,21 +1,19 @@
 const {
   createConfig,
-  match,
   defineConstants,
   env,
   entryPoint,
   setOutput,
   sourceMaps,
-  addPlugins,
-  file,
-  postcss,
-  sass,
-  typescript,
-  extractText
-} = require('webpack-blocks');
-const babel = require('@webpack-blocks/babel');
-const devServer = require('@webpack-blocks/dev-server');
+  addPlugins
+} = require('@webpack-blocks/webpack2');
+const babel = require('@webpack-blocks/babel6');
+const devServer = require('@webpack-blocks/dev-server2');
+const postcss = require('@webpack-blocks/postcss');
+const sass = require('@webpack-blocks/sass');
+const typescript = require('@webpack-blocks/typescript');
 const tslint = require('@webpack-blocks/tslint');
+const extractText = require('@webpack-blocks/extract-text2');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -33,11 +31,10 @@ module.exports = createConfig([
   tslint(),
   sass(),
   extractText('[name].css', 'text/x-sass'),
-  postcss({ autoprefixer: autoprefixer({ browsers: ['last 2 versions'] }) }),
+  postcss([autoprefixer({ browsers: ['last 2 versions'] })]),
   defineConstants({
     'process.env.NODE_ENV': process.env.NODE_ENV
   }),
-  match(['*.gif', '*.jpg', '*.jpeg', '*.png', '*.svg', '*.webp'], [file()]),
   addPlugins([
     new HtmlWebpackPlugin({
       template: './index.ejs',
