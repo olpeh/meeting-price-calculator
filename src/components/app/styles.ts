@@ -17,5 +17,13 @@ export const styles = stylesheet({
     alignItems: 'center',
     flex: '6 1 auto',
     justifyContent: 'space-around'
+  },
+  overlay: {
+    position: 'absolute',
+    height: '80vh',
+    width: '100%',
+    left: 0,
+    bottom: 0,
+    background: 'rgba(255,255,255,.5)'
   }
 });

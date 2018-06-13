@@ -42,7 +42,12 @@ export default function App(sources: Sources): Sinks {
     .map(([header, ticker, controls, duration, footer]) =>
       div(`.${styles.flexContainer}`, [
         header,
-        main(`.${styles.wrapper}`, [ticker, controls, duration]),
+        main(`.${styles.wrapper}`, [
+          div(`.${styles.overlay}`),
+          ticker,
+          controls,
+          duration
+        ]),
         footer
       ])
     );
